@@ -1,7 +1,7 @@
 package com.dkfedko;
 
 public interface Stack {
-    void push(Object value);
+    void push (Object value);
 
     Object pop();
 
@@ -13,8 +13,11 @@ public interface Stack {
 
     void clean();
 
-    Object copyStack(Object value);
+    Object copyStack();
 
-    Object reversCopy(Object value);
+    Object reversCopy();
 
+    Object removeHalf (Object value);
+
+    boolean contains(Object value);
 }
