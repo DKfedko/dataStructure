@@ -6,32 +6,27 @@ public class ArrayStack implements Stack {
     private int size;
 
     @Override
-    public Object copyStack() {
+    public Object copyStack(Object value) {
         Object[] array = new Object[size];
         for (int i = 0; i < size; i++) {
-            array [i] = stack[i];
+            array[i] = stack[i];
         }
         return array;
     }
 
     @Override
-    public Object reversCopy() {
+    public Object reversCopy(Object value) {
         Object[] array = new Object[size];
         for (int i = 0; i < size; i++) {
-            array[i] = stack [size - 1 - i];
+            array[i] = stack[size - 1 - i];
         }
         return array;
-    }
-
-    @Override
-    public Object removeHalf(Object value) {
-        return stack[size / 2];
     }
 
     @Override
     public boolean contains(Object value) {
-        for (int i = 0; i < size; i++){
-            if (stack[i].equals(value)){
+        for (int i = 0; i < size; i++) {
+            if (stack[i].equals(value)) {
                 return true;
             }
         }
@@ -39,10 +34,27 @@ public class ArrayStack implements Stack {
     }
 
     @Override
-    public void push(Object value) {
+    public void grow() {
+        if (size == stack.length) {
+            int newLength = stack.length * 2;
+            Object[] newStack = new Object[stack.length];
+            for (int i = 0; i < size; i++) {
+                newStack[i] = stack[i];
+            }
+            stack = newStack;
+        }
+    }
+
+    @Override
+    public void remove() {
+        size--;
+    }
+
+    @Override
+    public void push (Object value) {
+        grow();
         stack[size] = value;
         size++;
-
     }
 
     @Override
@@ -58,8 +70,11 @@ public class ArrayStack implements Stack {
     }
 
     @Override
-    public boolean empty() {
-        return size == 0;
+    public boolean isEmpty() {
+        if (size == 0) {
+            return true;
+        }
+            return false;
     }
 
     @Override
