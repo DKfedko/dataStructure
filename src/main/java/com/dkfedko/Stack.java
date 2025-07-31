@@ -1,6 +1,7 @@
 package com.dkfedko;
 
 public interface Stack {
+
     void push (Object value);
 
     Object pop ();
@@ -21,6 +22,6 @@ public interface Stack {
 
     void grow();
 
-    void remove();
+    void removeTopValue();
 
 }

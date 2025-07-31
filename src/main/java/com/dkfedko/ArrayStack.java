@@ -2,7 +2,7 @@ package com.dkfedko;
 
 public class ArrayStack implements Stack {
 
-    private Object[] stack = new Object[100];
+    private Object[] stack = new Object[5];
     private int size;
 
     @Override
@@ -46,12 +46,12 @@ public class ArrayStack implements Stack {
     }
 
     @Override
-    public void remove() {
+    public void removeTopValue() {
         size--;
     }
 
     @Override
-    public void push (Object value) {
+    public void push(Object value) {
         grow();
         stack[size] = value;
         size++;
@@ -59,6 +59,10 @@ public class ArrayStack implements Stack {
 
     @Override
     public Object pop() {
+        if (isEmpty()){
+                throw new IllegalStateException("Stack is empty, nothing to peek ");
+            }
+
         Object result = stack[size - 1];
         size--;
         return result;
@@ -66,8 +70,11 @@ public class ArrayStack implements Stack {
 
     @Override
     public Object peek() {
-        return stack[size - 1];
-    }
+        if (isEmpty()) {
+            throw new IllegalStateException("Stack is empty, nothing to peek ");
+        }
+            return stack[size - 1];
+        }
 
     @Override
     public boolean isEmpty() {
