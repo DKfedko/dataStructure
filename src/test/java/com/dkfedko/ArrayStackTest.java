@@ -95,7 +95,7 @@ class ArrayStackTest {
     }
 
     @Test
-    void multitest() {
+    void shouldRemoveTopValue() {
 
         //arrange
         stack.push("cat");
@@ -144,7 +144,7 @@ class ArrayStackTest {
     }
 
     @Test
-    void shouldReversCleanPeekPushAndCheckIfContains() {
+    void shouldReversCleanPushAndCheckIfContains() {
 
         //arrange
 
@@ -156,12 +156,25 @@ class ArrayStackTest {
         //act
         assertEquals(4, stack.size());
         stack.clean();
-        assertThrows(IllegalStateException.class, () -> {
-            stack.peek();
-        });
         assertEquals(0, stack.size());
         stack.push(4);
         assertEquals(1, stack.size());
         assertFalse(stack.contains(1));
+    }
+    @Test
+    void shouldThrowExceptionWhenEmpty(){
+
+        assertThrows(IllegalStateException.class, () -> {
+            stack.pop();
+        });
+
+        assertThrows(IllegalStateException.class, () -> {
+            stack.peek();
+        });
+
+        assertThrows(IllegalStateException.class, () -> {
+            stack.removeTopValue();
+        });
+
     }
 }

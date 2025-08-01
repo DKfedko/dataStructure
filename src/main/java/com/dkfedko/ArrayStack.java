@@ -47,6 +47,9 @@ public class ArrayStack implements Stack {
 
     @Override
     public void removeTopValue() {
+        if (isEmpty()){
+            throw new IllegalStateException("Stack is empty, nothing to remove ");
+        }
         size--;
     }
 
@@ -60,7 +63,7 @@ public class ArrayStack implements Stack {
     @Override
     public Object pop() {
         if (isEmpty()){
-                throw new IllegalStateException("Stack is empty, nothing to peek ");
+                throw new IllegalStateException("Stack is empty, nothing to pop ");
             }
 
         Object result = stack[size - 1];
