@@ -1,5 +1,6 @@
 package com.dkfedko;
 
+import com.dkfedko.queue.ArrayQueue;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -145,6 +146,20 @@ class ArrayQueueTest {
         assertThrows(IllegalStateException.class, () -> {
             arrayQueue.contains(0);
         });
+
+    }
+
+    @Test
+    void testToString() {
+        arrayQueue.enqueue("A");
+        arrayQueue.enqueue("B");
+        arrayQueue.enqueue("C");
+        arrayQueue.enqueue("D");
+        arrayQueue.enqueue("E");
+
+        String queueToString = arrayQueue.toString();
+        assertEquals("[A, B, C, D, E, ]", queueToString);
+
 
     }
 }

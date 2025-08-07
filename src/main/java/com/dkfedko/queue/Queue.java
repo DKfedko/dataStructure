@@ -1,4 +1,4 @@
-package com.dkfedko;
+package com.dkfedko.queue;
 
 public interface Queue {
     void enqueue(Object value);
@@ -7,5 +7,5 @@ public interface Queue {
     int size();
     boolean isEmpty();
     boolean contains(Object value);
-
+    String toString();
 }

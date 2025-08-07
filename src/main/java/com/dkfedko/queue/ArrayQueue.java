@@ -1,4 +1,4 @@
-package com.dkfedko;
+package com.dkfedko.queue;
 
 public class ArrayQueue implements Queue {
 
@@ -68,5 +68,17 @@ public class ArrayQueue implements Queue {
             }
             arrayQueue = newQueue;
         }
+    }
+
+    @Override
+    public String toString() {
+        String start = "[";
+        for (int i = 0; i < size; i++){
+        start = start + arrayQueue[i];
+        start = start + ",";
+        start = start + " ";
+        }
+        start +=']';
+        return start;
     }
 }

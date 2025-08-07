@@ -1,4 +1,4 @@
-package com.dkfedko;
+package com.dkfedko.stack;
 
 public interface Stack {
 
@@ -14,9 +14,6 @@ public interface Stack {
 
     void clean();
 
-    Object copyStack(Object value);
-
-    Object reversCopy(Object value);
 
     boolean contains(Object value);
 

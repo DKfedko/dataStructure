@@ -1,27 +1,9 @@
-package com.dkfedko;
+package com.dkfedko.stack;
 
 public class ArrayStack implements Stack {
 
     private Object[] stack = new Object[5];
     private int size;
-
-    @Override
-    public Object copyStack(Object value) {
-        Object[] array = new Object[size];
-        for (int i = 0; i < size; i++) {
-            array[i] = stack[i];
-        }
-        return array;
-    }
-
-    @Override
-    public Object reversCopy(Object value) {
-        Object[] array = new Object[size];
-        for (int i = 0; i < size; i++) {
-            array[i] = stack[size - 1 - i];
-        }
-        return array;
-    }
 
     @Override
     public boolean contains(Object value) {
