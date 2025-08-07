@@ -33,11 +33,10 @@ public class ArrayStack implements Stack {
         return false;
     }
 
-    @Override
-    public void grow() {
+    private void grow() {
         if (size == stack.length) {
             int newLength = stack.length * 2;
-            Object[] newStack = new Object[stack.length];
+            Object[] newStack = new Object[newLength];
             for (int i = 0; i < size; i++) {
                 newStack[i] = stack[i];
             }

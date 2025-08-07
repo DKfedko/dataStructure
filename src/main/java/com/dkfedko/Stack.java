@@ -20,8 +20,6 @@ public interface Stack {
 
     boolean contains(Object value);
 
-    void grow();
-
     void removeTopValue();
 
 }
