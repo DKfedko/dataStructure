@@ -49,14 +49,14 @@ public class ArrayQueue implements Queue {
 
     @Override
     public boolean contains(Object value) {
-        if (size  ==0) {
+        if (size  == 0) {
             throw new IllegalStateException("No elements contains");
         }
         for (int i = 0; i< size; i++) {
-            if (arrayQueue.equals(value)) {
+            if (arrayQueue[i].equals(value)) {
                 return true;
             }
-            }
+        }
             return false;
     }
     public void grow(){

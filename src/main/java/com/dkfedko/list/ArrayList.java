@@ -2,12 +2,13 @@ package com.dkfedko.list;
 
 public class ArrayList implements List {
     private int size;
-    private Object[] elements;
+    private Object[] elements = new Object[DEFAULT_CAPACITY];
     private static final int DEFAULT_CAPACITY = 10;
 
     @Override
     public void add(Object value) {
-
+        elements[size]=value;
+        size++;
     }
 
     @Override
@@ -32,23 +33,32 @@ public class ArrayList implements List {
 
     @Override
     public int size() {
-        return 0;
+      return size;
     }
 
     @Override
     public boolean isEmpty() {
+        if (size ==0){
+            return true;
+        }
         return false;
     }
 
     @Override
     public boolean contains(Object value) {
+        for (int i = 0; i<size; i++) {
+            if (elements[i].equals(value)) {
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
-    public int index(Object value) {
+    public int indexOf(Object value) {
         return 0;
     }
+
 
     @Override
     public int lastIndexOf(Object value) {

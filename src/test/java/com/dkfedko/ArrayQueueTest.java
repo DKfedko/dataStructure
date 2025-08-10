@@ -32,9 +32,6 @@ class ArrayQueueTest {
     @Test
     void shouldCheckIfContains() {
 
-        //arrange
-        ArrayQueue[] array = new ArrayQueue[5];
-
         //assert
         assertTrue(arrayQueue.isEmpty());
 
@@ -50,7 +47,9 @@ class ArrayQueueTest {
         //assert
         assertEquals(2, arrayQueue.size());
 
-        assertFalse(arrayQueue.contains(array));
+        assertTrue(arrayQueue.contains("A"));
+        assertFalse(arrayQueue.contains("C"));
+
     }
 
     @Test

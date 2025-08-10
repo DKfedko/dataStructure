@@ -104,7 +104,7 @@ class ArrayStackTest {
         stack.push(2);
 
         //assert
-        assertFalse(stack.contains(3));
+        assertTrue(stack.contains("cat"));
     }
 
     @Test
