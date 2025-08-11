@@ -30,6 +30,11 @@ class ArrayListTest {
         assertEquals(3, arrayList.size());
 
     }
+        @Test
+        void shouldAddElementByIndex() {
+
+
+    }
     @Test
 
     void shouldCheckIfContains(){
@@ -79,4 +84,99 @@ class ArrayListTest {
         assertEquals("B", arrayList.get(1));
 
     }
+
+    @Test
+    void shouldClearList() {
+        assertTrue(arrayList.isEmpty());
+
+        arrayList.add("A");
+        arrayList.add("B");
+        arrayList.add("C");
+
+        arrayList.clear();
+        assertEquals(0, arrayList.size());
+        assertFalse(arrayList.contains("A"));
+
+
+    }
+    @Test
+    void shouldGetIndexOf() {
+
+        //arrange
+        arrayList.add("A");
+        arrayList.add("B");
+        arrayList.add("C");
+
+        arrayList.indexOf("B");
+
+        assertEquals(1, arrayList.indexOf("B"));
+
+        arrayList.set("Cat", 1);
+        arrayList.indexOf("Cat");
+
+        assertEquals(1, arrayList.indexOf("Cat"));
+
+        arrayList.clear();
+        assertEquals(0, arrayList.size());
+
+    }
+
+    @Test
+    void shouldGetLastIndexOf() {
+
+        //arrange
+        arrayList.add("A");
+        arrayList.add("B");
+        arrayList.add("C");
+        arrayList.add("D");
+        arrayList.add("B");
+        arrayList.add("B");
+
+        //act
+        arrayList.lastIndexOf("B");
+
+        //assert
+        assertEquals(5, arrayList.lastIndexOf("B"));
+
+    }
+
+    @Test
+
+    void shouldRemoveElement(){
+
+        //arrange
+        arrayList.add(5);
+        arrayList.add("cat");
+        arrayList.add(3.14);
+        arrayList.add('L');
+
+        //act
+        arrayList.remove(0);
+        arrayList.remove(0);
+
+        //arrange
+        assertEquals(3.14, arrayList.remove(0));
+    }
+    @Test
+
+    void shouldAddGetSetRemoveCheckIfContains(){
+
+        //arrange
+        arrayList.add(1);
+        arrayList.add("B");
+        arrayList.add("Cat");
+
+        assertEquals("Cat", arrayList.get(2));
+
+        arrayList.set("Dog",2);
+        arrayList.remove(2);
+        assertFalse(arrayList.contains("Cat"));
+        assertTrue(arrayList.contains("Dog"));
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            arrayList.remove(3);
+        });
+
+    }
+
 }

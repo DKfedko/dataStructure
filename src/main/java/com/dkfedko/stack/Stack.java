@@ -14,7 +14,6 @@ public interface Stack {
 
     void clean();
 
-
     boolean contains(Object value);
 
     void removeTopValue();

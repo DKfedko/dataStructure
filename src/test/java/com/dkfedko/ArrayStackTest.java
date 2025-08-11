@@ -139,6 +139,6 @@ class ArrayStackTest {
         assertThrows(IllegalStateException.class, () -> {
             stack.removeTopValue();
         });
-
     }
+
 }

@@ -12,6 +12,15 @@ public class ArrayList implements List {
     }
 
     @Override
+    public void add(Object value, int index) {
+        for (int i = size; i > index; i--){
+            elements[i] = elements[i-1];
+        }
+    elements[index] = value;
+    size++;
+    }
+
+    @Override
     public Object get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("ArrayList is out of bounds");
@@ -20,7 +29,7 @@ public class ArrayList implements List {
     }
 
     @Override
-    public Object set (Object value, int index) {
+    public Object set(Object value, int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("ArrayList is out of bounds");
         }
@@ -32,9 +41,13 @@ public class ArrayList implements List {
     public Object remove(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("ArrayList is out of bounds");
-
         }
-        return null;
+        Object list1 = elements [5];
+        for (int i = 1; i < size; i++) {
+           elements[i-1] = elements[i];
+        }
+        size--;
+        return list1;
     }
 
     @Override
@@ -44,12 +57,12 @@ public class ArrayList implements List {
 
     @Override
     public int size() {
-      return size;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        if (size ==0){
+        if (size == 0) {
             return true;
         }
         return false;
@@ -57,7 +70,7 @@ public class ArrayList implements List {
 
     @Override
     public boolean contains(Object value) {
-        for (int i = 0; i<size; i++) {
+        for (int i = 0; i < size; i++) {
             if (elements[i].equals(value)) {
                 return true;
             }
@@ -67,12 +80,33 @@ public class ArrayList implements List {
 
     @Override
     public int indexOf(Object value) {
+        for (int i = 0; i < size; i++) {
+            if (elements[i].equals(value)) {
+                return i;
+            }
+        }
         return 0;
     }
 
-
     @Override
     public int lastIndexOf(Object value) {
-        return 0;
+        for (int i = size - 1; i >= 0; i--) {
+            if (elements[i].equals(value)) {
+                return i;
+            }
+        }
+        return  0;
+    }
+
+    @Override
+    public String toString() {
+        String start = "[";
+        for (int i = 0; i < size; i++) {
+            start = start + elements[i];
+            start = start + ",";
+            start = start + " ";
+        }
+        start = "]";
+        return start;
     }
 }
