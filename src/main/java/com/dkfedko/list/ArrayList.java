@@ -7,28 +7,39 @@ public class ArrayList implements List {
 
     @Override
     public void add(Object value) {
-        elements[size]=value;
+        elements[size] = value;
         size++;
     }
 
     @Override
     public Object get(int index) {
-        return null;
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("ArrayList is out of bounds");
+        }
+        return elements[index];
     }
 
     @Override
-    public Object set(Object value, int index) {
-        return null;
+    public Object set (Object value, int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("ArrayList is out of bounds");
+        }
+        elements[index] = value;
+        return value;
     }
 
     @Override
     public Object remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("ArrayList is out of bounds");
+
+        }
         return null;
     }
 
     @Override
     public void clear() {
-
+        size = 0;
     }
 
     @Override

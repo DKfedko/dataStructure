@@ -16,18 +16,6 @@ class ArrayListTest {
     }
 
     @Test
-
-    void shouldCheckIfContains(){
-
-        assertTrue(arrayList.isEmpty());
-
-        arrayList.add("Cat");
-        assertFalse(arrayList.contains("Cat"));
-        assertFalse(arrayList.contains(1));
-
-    }
-
-    @Test
     void shouldAddValue() {
 
         //arrange
@@ -41,8 +29,54 @@ class ArrayListTest {
         //assert
         assertEquals(3, arrayList.size());
 
-        assertTrue(arrayList.contains("A"));
+    }
+    @Test
+
+    void shouldCheckIfContains(){
+
+        assertTrue(arrayList.isEmpty());
+
+        arrayList.add("Cat");
+
+        assertTrue(arrayList.contains("Cat"));
+
+        assertFalse(arrayList.contains(1));
 
     }
 
+    @Test
+    void shouldGetValue(){
+
+        assertTrue(arrayList.isEmpty());
+
+        arrayList.add("A");
+        arrayList.add("B");
+        arrayList.add("C");
+
+        assertEquals("A", arrayList.get(0));
+        assertEquals("B", arrayList.get(1));
+        assertEquals("C", arrayList.get(2));
+
+        assertFalse(arrayList.isEmpty());
+
+
+    }
+
+    @Test
+    void shouldSetNewElements() {
+        assertTrue(arrayList.isEmpty());
+
+        arrayList.add("A");
+        arrayList.add("B");
+        arrayList.add("C");
+
+        arrayList.set("Cat", 1);
+
+        assertEquals("Cat", arrayList.get(1));
+
+        arrayList.set("B", 1);
+
+        assertEquals("B", arrayList.get(1));
+
+    }
 }
