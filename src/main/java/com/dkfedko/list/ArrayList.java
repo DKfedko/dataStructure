@@ -13,12 +13,15 @@ public class ArrayList implements List {
 
     @Override
     public void add(Object value, int index) {
-        for (int i = size; i > index; i--){
-            elements[i] = elements[i-1];
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Add element to index 0 first");
         }
-    elements[index] = value;
-    size++;
-    }
+            for (int i = size; i > index; i--) {
+                elements[i] = elements[i - 1];
+            }
+            elements[index] = value;
+            size++;
+        }
 
     @Override
     public Object get(int index) {
@@ -109,4 +112,5 @@ public class ArrayList implements List {
         start = "]";
         return start;
     }
+
 }

@@ -33,6 +33,21 @@ class ArrayListTest {
         @Test
         void shouldAddElementByIndex() {
 
+            assertTrue(arrayList.isEmpty());
+            assertFalse(arrayList.contains("Cat"));
+
+            assertThrows(IndexOutOfBoundsException.class, () -> {
+                arrayList.add("Cat", 1);
+            });
+
+            assertThrows(IndexOutOfBoundsException.class, () -> {
+                arrayList.add("Dog", -1);
+            });
+
+            arrayList.add("Cat", 0);
+            arrayList.add("Dog", 1);
+            assertEquals("Cat", arrayList.get(0));
+
 
     }
     @Test
@@ -45,7 +60,7 @@ class ArrayListTest {
 
         assertTrue(arrayList.contains("Cat"));
 
-        assertFalse(arrayList.contains(1));
+        assertFalse(arrayList.contains("Dog"));
 
     }
 
@@ -54,13 +69,13 @@ class ArrayListTest {
 
         assertTrue(arrayList.isEmpty());
 
-        arrayList.add("A");
-        arrayList.add("B");
-        arrayList.add("C");
+        arrayList.add('A');
+        arrayList.add('B');
+        arrayList.add('C');
 
-        assertEquals("A", arrayList.get(0));
-        assertEquals("B", arrayList.get(1));
-        assertEquals("C", arrayList.get(2));
+        assertEquals('A', arrayList.get(0));
+        assertEquals('B', arrayList.get(1));
+        assertEquals('C', arrayList.get(2));
 
         assertFalse(arrayList.isEmpty());
 
@@ -71,9 +86,17 @@ class ArrayListTest {
     void shouldSetNewElements() {
         assertTrue(arrayList.isEmpty());
 
-        arrayList.add("A");
-        arrayList.add("B");
-        arrayList.add("C");
+        arrayList.add('A');
+        arrayList.add('B');
+        arrayList.add('C');
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            arrayList.set("cat", 3);
+        });
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            arrayList.set("Cat", -1);
+        });
 
         arrayList.set("Cat", 1);
 
@@ -97,7 +120,6 @@ class ArrayListTest {
         assertEquals(0, arrayList.size());
         assertFalse(arrayList.contains("A"));
 
-
     }
     @Test
     void shouldGetIndexOf() {
@@ -106,6 +128,10 @@ class ArrayListTest {
         arrayList.add("A");
         arrayList.add("B");
         arrayList.add("C");
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            arrayList.get(13);
+        });
 
         arrayList.indexOf("B");
 
@@ -150,12 +176,20 @@ class ArrayListTest {
         arrayList.add(3.14);
         arrayList.add('L');
 
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            arrayList.remove(-1);
+        });
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            arrayList.get(5);
+        });
+
         //act
         arrayList.remove(0);
         arrayList.remove(0);
 
         //arrange
-        assertEquals(3.14, arrayList.remove(0));
+        assertEquals(3.14, arrayList.get(0));
     }
     @Test
 
@@ -176,6 +210,23 @@ class ArrayListTest {
         assertThrows(IndexOutOfBoundsException.class, () -> {
             arrayList.remove(3);
         });
+
+    }
+    @Test
+    void shouldThrowExceptions(){
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            arrayList.add("Cat", 1);
+        });
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            arrayList.add("Cat", -1);
+        });
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            arrayList.get(-1);
+        });
+
 
     }
 

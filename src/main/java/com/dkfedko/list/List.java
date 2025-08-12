@@ -2,9 +2,9 @@ package com.dkfedko.list;
 
 public interface List {
     void add (Object value);
-    void add (Object value, int index);
+    void add(Object value, int index);
     Object get (int index);
-    Object set (Object value, int index);
+    Object set(Object value, int index);
     Object remove(int index);
     void clear();
     int size();
