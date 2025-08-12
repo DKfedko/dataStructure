@@ -78,7 +78,7 @@ public class ArrayQueue implements Queue {
         start = start + ",";
         start = start + " ";
         }
-        start +=']';
+        start +="]";
         return start;
     }
 }

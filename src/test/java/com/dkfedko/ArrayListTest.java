@@ -226,6 +226,19 @@ class ArrayListTest {
         assertThrows(IndexOutOfBoundsException.class, () -> {
             arrayList.get(-1);
         });
+    }
+
+    @Test
+
+    void testToString(){
+
+        arrayList.add("A", 0);
+        arrayList.add("B", 1);
+        arrayList.add("C", 2);
+        arrayList.add("D", 3);
+
+        String arrayListString = arrayList.toString();
+        assertEquals("[A, B, C, D, ]", arrayListString);
 
 
     }

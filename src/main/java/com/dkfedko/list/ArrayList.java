@@ -109,8 +109,7 @@ public class ArrayList implements List {
             start = start + ",";
             start = start + " ";
         }
-        start = "]";
+        start += "]";
         return start;
     }
-
 }
