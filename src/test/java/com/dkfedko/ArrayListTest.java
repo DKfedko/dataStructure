@@ -228,7 +228,14 @@ class ArrayListTest {
         });
 
         assertThrows(IndexOutOfBoundsException.class, () -> {
+            list.add("Cat", 100);
+        });
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
             arrayList.get(-1);
+        });
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            list.get(100);
         });
     }
 
