@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ArrayListTest {
     private ArrayList arrayList = new ArrayList();
+    private ArrayList list = new ArrayList(100);
 
     @Test
     void shouldCheckIfEmpty() {
@@ -33,21 +34,24 @@ class ArrayListTest {
         @Test
         void shouldAddElementByIndex() {
 
-            assertTrue(arrayList.isEmpty());
-            assertFalse(arrayList.contains("Cat"));
+            assertTrue(list.isEmpty());
+            assertFalse(list.contains("Cat"));
 
             assertThrows(IndexOutOfBoundsException.class, () -> {
-                arrayList.add("Cat", 1);
+                list.add("Cat", 1);
             });
 
             assertThrows(IndexOutOfBoundsException.class, () -> {
-                arrayList.add("Dog", -1);
+                list.add("Dog", -1);
             });
 
-            arrayList.add("Cat", 0);
-            arrayList.add("Dog", 1);
-            assertEquals("Cat", arrayList.get(0));
+            assertThrows(IndexOutOfBoundsException.class, () -> {
+                list.add("Dog", 100);
+            });
 
+            list.add("Cat", 0);
+            list.add("Dog", 1);
+            assertEquals("Cat", list.get(0));
 
     }
     @Test
