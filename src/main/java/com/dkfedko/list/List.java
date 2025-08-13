@@ -1,11 +1,27 @@
 package com.dkfedko.list;
 
 public interface List {
+
+    // add value to the end of the list
     void add (Object value);
+
+    // we can add value by index between [0, size]
+    // otherwise throw new IndexOutOfBoundsException
     void add(Object value, int index);
+
+    // we can get value by index between [0, size - 1]
+    // otherwise throw new IndexOutOfBoundsException
     Object get (int index);
+
+    // we can set value by index between [0, size - 1]
+    // otherwise throw new IndexOutOfBoundsException
     Object set(Object value, int index);
+
+    // we can remove value by index between [0, size - 1]
+    // otherwise throw new IndexOutOfBoundsException
     Object remove(int index);
+
+
     void clear();
     int size();
     boolean isEmpty();

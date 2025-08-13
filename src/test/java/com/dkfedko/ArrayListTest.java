@@ -83,7 +83,6 @@ class ArrayListTest {
 
         assertFalse(arrayList.isEmpty());
 
-
     }
 
     @Test
@@ -249,7 +248,7 @@ class ArrayListTest {
         arrayList.add("D", 3);
 
         String arrayListString = arrayList.toString();
-        assertEquals("[A, B, C, D, ]", arrayListString);
+        assertEquals("[A, B, C, D]", arrayListString);
 
 
     }

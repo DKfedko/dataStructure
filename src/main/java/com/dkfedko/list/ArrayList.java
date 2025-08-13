@@ -5,11 +5,11 @@ public class ArrayList implements List {
     private Object[] elements;
     private static final int DEFAULT_CAPACITY = 10;
 
-    public ArrayList(){
+    public ArrayList() {
         this.elements = new Object[DEFAULT_CAPACITY];
     }
 
-    public ArrayList (int capacity) {
+    public ArrayList(int capacity) {
         this.elements = new Object[capacity];
     }
 
@@ -24,12 +24,12 @@ public class ArrayList implements List {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Add element to index 0 first");
         }
-            for (int i = size; i > index; i--) {
-                elements[i] = elements[i - 1];
-            }
-            elements[index] = value;
-            size++;
+        for (int i = 0; i < size; i++) {
+            elements[i] = elements[i++];
         }
+        elements[index] = value;
+        size++;
+    }
 
     @Override
     public Object get(int index) {
@@ -53,9 +53,9 @@ public class ArrayList implements List {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("ArrayList is out of bounds");
         }
-        Object list1 = elements [5];
+        Object list1 = elements[5];
         for (int i = 1; i < size; i++) {
-           elements[i-1] = elements[i];
+            elements[i - 1] = elements[i];
         }
         size--;
         return list1;
@@ -82,7 +82,7 @@ public class ArrayList implements List {
     @Override
     public boolean contains(Object value) {
         for (int i = 0; i < size; i++) {
-            if (elements[i].equals(value)) {
+            if (elements[i] == value) {
                 return true;
             }
         }
@@ -92,7 +92,7 @@ public class ArrayList implements List {
     @Override
     public int indexOf(Object value) {
         for (int i = 0; i < size; i++) {
-            if (elements[i].equals(value)) {
+            if (elements[i] == value) {
                 return i;
             }
         }
@@ -102,11 +102,11 @@ public class ArrayList implements List {
     @Override
     public int lastIndexOf(Object value) {
         for (int i = size - 1; i >= 0; i--) {
-            if (elements[i].equals(value)) {
+            if (elements[i] == value) {
                 return i;
             }
         }
-        return  0;
+        return 0;
     }
 
     @Override
