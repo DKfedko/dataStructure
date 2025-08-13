@@ -108,11 +108,10 @@ public class ArrayList implements List {
     public String toString() {
         String start = "[";
         for (int i = 0; i < size; i++) {
-            start = start + elements[i];
-            start = start + ",";
-            start = start + " ";
+            start = start + elements[i] + "," + " ";
         }
-        start += "]";
+        start +="]";
+
         return start;
     }
 }
