@@ -6,13 +6,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ArrayListTest {
-    private ArrayList arrayList = new ArrayList();
     private ArrayList list = new ArrayList(100);
 
     @Test
     void shouldCheckIfEmpty() {
 
-        assertTrue(arrayList.isEmpty());
+        assertTrue(list.isEmpty());
 
     }
 
@@ -20,15 +19,15 @@ class ArrayListTest {
     void shouldAddValue() {
 
         //arrange
-        assertTrue(arrayList.isEmpty());
+        assertTrue(list.isEmpty());
 
         //act
-        arrayList.add("A");
-        arrayList.add("B");
-        arrayList.add("C");
+        list.add("A");
+        list.add("B");
+        list.add("C");
 
         //assert
-        assertEquals(3, arrayList.size());
+        assertEquals(3, list.size());
 
     }
         @Test
@@ -36,19 +35,6 @@ class ArrayListTest {
 
             assertTrue(list.isEmpty());
             assertFalse(list.contains("Cat"));
-
-            assertThrows(IndexOutOfBoundsException.class, () -> {
-                list.add("Cat", 1);
-            });
-
-            assertThrows(IndexOutOfBoundsException.class, () -> {
-                list.add("Dog", -1);
-            });
-
-            assertThrows(IndexOutOfBoundsException.class, () -> {
-                list.add("Dog", 100);
-            });
-
             list.add("Cat", 0);
             list.add("Dog", 1);
             assertEquals("Cat", list.get(0));
@@ -58,95 +44,95 @@ class ArrayListTest {
 
     void shouldCheckIfContains(){
 
-        assertTrue(arrayList.isEmpty());
+        assertTrue(list.isEmpty());
 
-        arrayList.add("Cat");
+        list.add("Cat");
 
-        assertTrue(arrayList.contains("Cat"));
+        assertTrue(list.contains("Cat"));
 
-        assertFalse(arrayList.contains("Dog"));
+        assertFalse(list.contains("Dog"));
 
     }
 
     @Test
     void shouldGetValue(){
 
-        assertTrue(arrayList.isEmpty());
+        assertTrue(list.isEmpty());
 
-        arrayList.add('A');
-        arrayList.add('B');
-        arrayList.add('C');
+        list.add('A');
+        list.add('B');
+        list.add('C');
 
-        assertEquals('A', arrayList.get(0));
-        assertEquals('B', arrayList.get(1));
-        assertEquals('C', arrayList.get(2));
+        assertEquals('A', list.get(0));
+        assertEquals('B', list.get(1));
+        assertEquals('C', list.get(2));
 
-        assertFalse(arrayList.isEmpty());
+        assertFalse(list.isEmpty());
 
     }
 
     @Test
     void shouldSetNewElements() {
-        assertTrue(arrayList.isEmpty());
+        assertTrue(list.isEmpty());
 
-        arrayList.add('A');
-        arrayList.add('B');
-        arrayList.add('C');
+        list.add('A');
+        list.add('B');
+        list.add('C');
 
         assertThrows(IndexOutOfBoundsException.class, () -> {
-            arrayList.set("cat", 3);
+            list.set("cat", 3);
         });
 
         assertThrows(IndexOutOfBoundsException.class, () -> {
-            arrayList.set("Cat", -1);
+            list.set("Cat", -1);
         });
 
-        arrayList.set("Cat", 1);
+        list.set("Cat", 1);
 
-        assertEquals("Cat", arrayList.get(1));
+        assertEquals("Cat", list.get(1));
 
-        arrayList.set("B", 1);
+        list.set("B", 1);
 
-        assertEquals("B", arrayList.get(1));
+        assertEquals("B", list.get(1));
 
     }
 
     @Test
     void shouldClearList() {
-        assertTrue(arrayList.isEmpty());
+        assertTrue(list.isEmpty());
 
-        arrayList.add("A");
-        arrayList.add("B");
-        arrayList.add("C");
+        list.add("A");
+        list.add("B");
+        list.add("C");
 
-        arrayList.clear();
-        assertEquals(0, arrayList.size());
-        assertFalse(arrayList.contains("A"));
+        list.clear();
+        assertEquals(0, list.size());
+        assertFalse(list.contains("A"));
 
     }
     @Test
     void shouldGetIndexOf() {
 
         //arrange
-        arrayList.add("A");
-        arrayList.add("B");
-        arrayList.add("C");
+        list.add("A");
+        list.add("B");
+        list.add("C");
 
         assertThrows(IndexOutOfBoundsException.class, () -> {
-            arrayList.get(13);
+            list.get(13);
         });
 
-        arrayList.indexOf("B");
+        list.indexOf("B");
 
-        assertEquals(1, arrayList.indexOf("B"));
+        assertEquals(1, list.indexOf("B"));
 
-        arrayList.set("Cat", 1);
-        arrayList.indexOf("Cat");
+        list.set("Cat", 1);
+        list.indexOf("Cat");
 
-        assertEquals(1, arrayList.indexOf("Cat"));
+        assertEquals(1, list.indexOf("Cat"));
 
-        arrayList.clear();
-        assertEquals(0, arrayList.size());
+        list.clear();
+        assertEquals(0, list.size());
 
     }
 
@@ -154,18 +140,18 @@ class ArrayListTest {
     void shouldGetLastIndexOf() {
 
         //arrange
-        arrayList.add("A");
-        arrayList.add("B");
-        arrayList.add("C");
-        arrayList.add("D");
-        arrayList.add("B");
-        arrayList.add("B");
+        list.add("A");
+        list.add("B");
+        list.add("C");
+        list.add("D");
+        list.add("B");
+        list.add("B");
 
         //act
-        arrayList.lastIndexOf("B");
+        list.lastIndexOf("B");
 
         //assert
-        assertEquals(5, arrayList.lastIndexOf("B"));
+        assertEquals(5, list.lastIndexOf("B"));
 
     }
 
@@ -174,44 +160,44 @@ class ArrayListTest {
     void shouldRemoveElement(){
 
         //arrange
-        arrayList.add(5);
-        arrayList.add("cat");
-        arrayList.add(3.14);
-        arrayList.add('L');
+        list.add(5);
+        list.add("cat");
+        list.add(3.14);
+        list.add('L');
 
         assertThrows(IndexOutOfBoundsException.class, () -> {
-            arrayList.remove(-1);
+            list.remove(-1);
         });
 
         assertThrows(IndexOutOfBoundsException.class, () -> {
-            arrayList.get(5);
+            list.get(5);
         });
 
         //act
-        arrayList.remove(0);
-        arrayList.remove(0);
+        list.remove(0);
+        list.remove(0);
 
         //arrange
-        assertEquals(3.14, arrayList.get(0));
+        assertEquals(3.14, list.get(0));
     }
     @Test
 
     void shouldAddGetSetRemoveCheckIfContains(){
 
         //arrange
-        arrayList.add(1);
-        arrayList.add("B");
-        arrayList.add("Cat");
+        list.add(1);
+        list.add("B");
+        list.add("Cat");
 
-        assertEquals("Cat", arrayList.get(2));
+        assertEquals("Cat", list.get(2));
 
-        arrayList.set("Dog",2);
-        arrayList.remove(2);
-        assertFalse(arrayList.contains("Cat"));
-        assertTrue(arrayList.contains("Dog"));
+        list.set("Dog",2);
+        list.remove(2);
+        assertFalse(list.contains("Cat"));
+        assertTrue(list.contains("Dog"));
 
         assertThrows(IndexOutOfBoundsException.class, () -> {
-            arrayList.remove(3);
+            list.remove(3);
         });
 
     }
@@ -219,11 +205,11 @@ class ArrayListTest {
     void shouldThrowExceptions(){
 
         assertThrows(IndexOutOfBoundsException.class, () -> {
-            arrayList.add("Cat", 1);
+            list.add("Cat", 1);
         });
 
         assertThrows(IndexOutOfBoundsException.class, () -> {
-            arrayList.add("Cat", -1);
+            list.add("Cat", -1);
         });
 
         assertThrows(IndexOutOfBoundsException.class, () -> {
@@ -231,25 +217,36 @@ class ArrayListTest {
         });
 
         assertThrows(IndexOutOfBoundsException.class, () -> {
-            arrayList.get(-1);
+            list.get(-1);
         });
         assertThrows(IndexOutOfBoundsException.class, () -> {
             list.get(100);
         });
-    }
 
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            list.remove(100);
+        });
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            list.remove(-1);
+        });
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            list.set("cat", 100);
+        });
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            list.set("cat", -1);
+        });
+    }
     @Test
 
     void testToString(){
 
-        arrayList.add("A", 0);
-        arrayList.add("B", 1);
-        arrayList.add("C", 2);
-        arrayList.add("D", 3);
+        list.add("A", 0);
+        list.add("B", 1);
+        list.add("C", 2);
+        list.add("D", 3);
 
-        String arrayListString = arrayList.toString();
+        String arrayListString = list.toString();
         assertEquals("[A, B, C, D]", arrayListString);
-
 
     }
 

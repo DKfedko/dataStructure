@@ -2,12 +2,8 @@ package com.dkfedko.list;
 
 public class ArrayList implements List {
     private int size;
-    private Object[] elements;
+    private Object[] elements = new Object[DEFAULT_CAPACITY];
     private static final int DEFAULT_CAPACITY = 10;
-
-    public ArrayList() {
-        this.elements = new Object[DEFAULT_CAPACITY];
-    }
 
     public ArrayList(int capacity) {
         this.elements = new Object[capacity];
@@ -44,8 +40,7 @@ public class ArrayList implements List {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("ArrayList is out of bounds");
         }
-        elements[index] = value;
-        return value;
+        return elements[index] = value;
     }
 
     @Override
