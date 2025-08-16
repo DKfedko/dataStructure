@@ -1,7 +1,5 @@
-package com.dkfedko;
+package com.dkfedko.stack;
 
-import com.dkfedko.stack.ArrayStack;
-import com.dkfedko.stack.Stack;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;

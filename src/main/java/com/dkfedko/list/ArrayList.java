@@ -2,8 +2,14 @@ package com.dkfedko.list;
 
 public class ArrayList implements List {
     private int size;
-    private Object[] elements = new Object[DEFAULT_CAPACITY];
+    private Object[] elements;
     private static final int DEFAULT_CAPACITY = 10;
+
+
+    public ArrayList() {
+        this.elements = new Object[DEFAULT_CAPACITY];
+
+    }
 
     public ArrayList(int capacity) {
         this.elements = new Object[capacity];
@@ -11,15 +17,17 @@ public class ArrayList implements List {
 
     @Override
     public void add(Object value) {
+        grow();
         elements[size] = value;
         size++;
     }
 
     @Override
     public void add(Object value, int index) {
-        if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException("Add element to index 0 first");
-        }
+
+        validateIndex(index);
+        grow();
+
         for (int i = 0; i < size; i++) {
             elements[i] = elements[i++];
         }
@@ -29,31 +37,32 @@ public class ArrayList implements List {
 
     @Override
     public Object get(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("ArrayList is out of bounds");
-        }
+        validateIndex(index);
         return elements[index];
     }
 
     @Override
-    public Object set(Object value, int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("ArrayList is out of bounds");
-        }
-        return elements[index] = value;
+    public Object set(Object newValue, int index) {
+        validateIndex(index);
+
+        Object oldValue = elements[index];
+        elements[index] = newValue;
+        return oldValue;
     }
 
     @Override
     public Object remove(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("ArrayList is out of bounds");
+        validateIndex(index);
+        if (size == 0) {
+            throw new IllegalStateException("size is " + size + " nothing to remove");
         }
-        Object list1 = elements[5];
-        for (int i = 1; i < size; i++) {
-            elements[i - 1] = elements[i];
+        Object removed = elements[index];
+        for (int i = index; i < size - 1; i++) {
+            elements[i] = elements[i + 1];
         }
+        elements[size - 1] = null;
         size--;
-        return list1;
+        return removed;
     }
 
     @Override
@@ -91,7 +100,7 @@ public class ArrayList implements List {
                 return i;
             }
         }
-        return 0;
+        return -1;
     }
 
     @Override
@@ -101,17 +110,35 @@ public class ArrayList implements List {
                 return i;
             }
         }
-        return 0;
+        return -1;
     }
 
     @Override
     public String toString() {
-        String start = "[";
-        for (int i = 0; i < size; i++) {
-            start = start + elements[i] + "," + " ";
+        String result = "[";
+        for (int i = 0; i < size; i++){
+            result = result + elements[i];
+            if (i < size - 1){
+                result = result + ", ";
+            }
         }
-        start +="]";
+        result += "]";
+        return result;
+    }
 
-        return start;
+    private void validateIndex(int index) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("list is empty " + "size = " + size);
+        }
+    }
+    private void grow() {
+        if (size == elements.length) {
+            Object[] extendedList = new Object[elements.length * 2];
+            for (int i = 0; i < elements.length; size++) {
+                extendedList[i] = elements[i];
+            }
+            elements = extendedList;
+        }
+
     }
 }

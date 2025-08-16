@@ -1,6 +1,5 @@
-package com.dkfedko;
+package com.dkfedko.queue;
 
-import com.dkfedko.queue.ArrayQueue;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
