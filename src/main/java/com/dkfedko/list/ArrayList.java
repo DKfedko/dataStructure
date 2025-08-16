@@ -1,29 +1,29 @@
 package com.dkfedko.list;
 
-public class ArrayList implements List {
+public class ArrayList<T> implements List<T> {
     private int size;
-    private Object[] elements;
+    private T [] elements;
     private static final int DEFAULT_CAPACITY = 10;
 
 
     public ArrayList() {
-        this.elements = new Object[DEFAULT_CAPACITY];
+        this.elements = new T [DEFAULT_CAPACITY];
 
     }
 
     public ArrayList(int capacity) {
-        this.elements = new Object[capacity];
+        this.elements = new T [capacity];
     }
 
     @Override
-    public void add(Object value) {
+    public void add(T value) {
         grow();
         elements[size] = value;
         size++;
     }
 
     @Override
-    public void add(Object value, int index) {
+    public void add(T value, int index) {
 
         validateIndex(index);
         grow();
@@ -36,27 +36,27 @@ public class ArrayList implements List {
     }
 
     @Override
-    public Object get(int index) {
+    public T get(int index) {
         validateIndex(index);
         return elements[index];
     }
 
     @Override
-    public Object set(Object newValue, int index) {
+    public T set(T newValue, int index) {
         validateIndex(index);
 
-        Object oldValue = elements[index];
+        T oldValue = elements[index];
         elements[index] = newValue;
         return oldValue;
     }
 
     @Override
-    public Object remove(int index) {
+    public T remove(int index) {
         validateIndex(index);
         if (size == 0) {
             throw new IllegalStateException("size is " + size + " nothing to remove");
         }
-        Object removed = elements[index];
+        T removed = elements[index];
         for (int i = index; i < size - 1; i++) {
             elements[i] = elements[i + 1];
         }
@@ -84,7 +84,7 @@ public class ArrayList implements List {
     }
 
     @Override
-    public boolean contains(Object value) {
+    public boolean contains(T value) {
         for (int i = 0; i < size; i++) {
             if (elements[i] == value) {
                 return true;
@@ -94,7 +94,7 @@ public class ArrayList implements List {
     }
 
     @Override
-    public int indexOf(Object value) {
+    public int indexOf(T value) {
         for (int i = 0; i < size; i++) {
             if (elements[i] == value) {
                 return i;
@@ -104,7 +104,7 @@ public class ArrayList implements List {
     }
 
     @Override
-    public int lastIndexOf(Object value) {
+    public int lastIndexOf(T value) {
         for (int i = size - 1; i >= 0; i--) {
             if (elements[i] == value) {
                 return i;
@@ -133,7 +133,7 @@ public class ArrayList implements List {
     }
     private void grow() {
         if (size == elements.length) {
-            Object[] extendedList = new Object[elements.length * 2];
+            T[] extendedList = new T [elements.length * 2];
             for (int i = 0; i < elements.length; size++) {
                 extendedList[i] = elements[i];
             }

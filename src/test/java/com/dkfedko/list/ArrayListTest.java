@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ArrayListTest {
-    private ArrayList arrayList = new ArrayList();
-    private ArrayList list = new ArrayList(100);
+    private ArrayList<String> arrayList = new ArrayList<>();
+    private ArrayList<String> list = new ArrayList<>(100);
 
     @Test
     void shouldCheckIfEmpty() {
@@ -72,9 +72,9 @@ class ArrayListTest {
         //arrange
         assertTrue(list.isEmpty());
 
-        list.add('A');
-        list.add('B');
-        list.add('C');
+        list.add("A");
+        list.add("B");
+        list.add("C");
 
         //act
         list.set("Cat", 1);
@@ -158,24 +158,24 @@ class ArrayListTest {
     void shouldRemoveElement(){
 
         //arrange
-        list.add(5);
+        list.add("A");
         list.add("cat");
-        list.add(3.14);
-        list.add('L');
+        list.add("Horse");
+        list.add("Danylo");
 
         //act
         list.remove(0);
         list.remove(0);
 
         //arrange
-        assertEquals(3.14, list.get(0));
+        assertEquals("A", list.get(0));
     }
     @Test
 
     void shouldAddGetSetRemoveCheckIfContains(){
 
         //arrange
-        list.add(1);
+        list.add("A");
         list.add("B");
         list.add("Cat");
 
