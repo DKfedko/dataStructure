@@ -7,12 +7,12 @@ public class ArrayList<T> implements List<T> {
 
 
     public ArrayList() {
-        this.elements = new T [DEFAULT_CAPACITY];
+        this.elements = (T []) new Object [DEFAULT_CAPACITY];
 
     }
 
-    public ArrayList(int capacity) {
-        this.elements = new T [capacity];
+    public ArrayList (int capacity) {
+        this.elements =  (T[]) new Object [capacity];
     }
 
     @Override
@@ -133,12 +133,12 @@ public class ArrayList<T> implements List<T> {
     }
     private void grow() {
         if (size == elements.length) {
-            T[] extendedList = new T [elements.length * 2];
-            for (int i = 0; i < elements.length; size++) {
-                extendedList[i] = elements[i];
+            int extendedList = elements.length * 2;
+            T[] newList = (T[]) new Object[extendedList];
+            for (int i = 0; i < elements.length; i++) {
+                newList[i] = elements[i];
             }
-            elements = extendedList;
+            elements = newList;
         }
-
     }
 }

@@ -5,12 +5,17 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ArrayListTest {
-    private ArrayList<String> arrayList = new ArrayList<>();
+    private ArrayList<Integer> arrayList = new ArrayList<>();
     private ArrayList<String> list = new ArrayList<>(100);
 
     @Test
     void shouldCheckIfEmpty() {
+
         assertTrue(arrayList.isEmpty());
+
+        arrayList.add(1);
+
+        assertEquals(1, arrayList.get(0));
 
     }
 
@@ -168,7 +173,7 @@ class ArrayListTest {
         list.remove(0);
 
         //arrange
-        assertEquals("A", list.get(0));
+        assertEquals("Horse", list.get(0));
     }
     @Test
 
@@ -242,5 +247,13 @@ class ArrayListTest {
         assertEquals("[A, B, C, D]", arrayListString);
 
     }
-
+    @Test
+    void testArrayListGrowth() {
+        ArrayList<Integer> newList = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            newList.add(i);
+            assertEquals(i+1, newList.size());
+            assertEquals(Integer.valueOf(i), newList.get(i));
+        }
+    }
 }

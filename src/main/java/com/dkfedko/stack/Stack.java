@@ -1,8 +1,8 @@
 package com.dkfedko.stack;
 
-public interface Stack {
+public interface Stack<T> {
 
-    void push (Object value);
+    void push (T value);
 
     Object pop ();
 
@@ -14,7 +14,7 @@ public interface Stack {
 
     void clean();
 
-    boolean contains(Object value);
+    boolean contains(T value);
 
     void removeTopValue();
 
