@@ -16,6 +16,4 @@ public interface Stack<T> {
 
     boolean contains(T value);
 
-    void removeTopValue();
-
 }

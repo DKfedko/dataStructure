@@ -1,33 +1,75 @@
 package com.dkfedko.queue;
 
-public class LinkedQueue implements Queue{
-    @Override
-    public void enqueue(Object value) {
+public class LinkedQueue<T> implements Queue<T> {
 
+    Node<T> head;
+    int size;
+
+    public static class Node<T> {
+        T value;
+        Node<T> next;
+
+        Node(T value) {
+            this.value = value;
+        }
+    }
+
+    @Override
+    public void enqueue(T value) {
+        Node<T> newNode = new Node<>(value);
+        if (isEmpty()){
+            head = newNode;
+        }else {
+            Node<T> current = head;
+            while (current.next != null){
+                current = current.next;
+            }
+            current.next  = newNode;
+        }
+        size++;
     }
 
     @Override
     public Object dequeue() {
-        return null;
+        if (isEmpty()){
+            throw new IllegalStateException("LinkedQueue is empty, size = " + size);
+        };
+       Object result = head.value;
+       head = head.next;
+       size --;
+       return result;
     }
 
     @Override
     public Object peek() {
-        return null;
+        if (isEmpty()){
+            throw new IllegalStateException("LinkedQueue is empty, size = " + size);
+        };
+        return head.value;
     }
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override
-    public boolean contains(Object value) {
+    public boolean contains(T value) {
+        if (isEmpty()){
+            throw new IllegalStateException("LinkedQueue is empty, size = " + size);
+        };
+        Node<T> current  = head;
+        while (current != null){
+            if (current.value == (value)){
+                return true;
+            }
+            current=current.next;
+        }
         return false;
     }
 }

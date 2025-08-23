@@ -24,14 +24,7 @@ public class ArrayStack implements Stack {
             }
             stack = newStack;
         }
-    }
 
-    @Override
-    public void removeTopValue() {
-        if (isEmpty()){
-            throw new IllegalStateException("Stack is empty, nothing to remove ");
-        }
-        size--;
     }
 
     @Override

@@ -66,7 +66,6 @@ class ArrayStackTest {
 
         //act and assert
         assertEquals(3, stack.size());
-        stack.removeTopValue();
         assertEquals(2, stack.size());
         assertFalse(stack.isEmpty());
         stack.clean();
@@ -132,10 +131,6 @@ class ArrayStackTest {
 
         assertThrows(IllegalStateException.class, () -> {
             stack.peek();
-        });
-
-        assertThrows(IllegalStateException.class, () -> {
-            stack.removeTopValue();
         });
     }
 

@@ -1,6 +1,6 @@
 package com.dkfedko.queue;
 
-public class ArrayQueue implements Queue {
+public class ArrayQueue<T> implements Queue<T> {
 
     private Object[] arrayQueue = new Object[5];
     private int size;
