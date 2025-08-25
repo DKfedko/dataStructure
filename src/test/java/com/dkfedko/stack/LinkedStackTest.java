@@ -1,14 +1,17 @@
 package com.dkfedko.stack;
 
+import com.dkfedko.BaseTest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LinkedStackTest {
+class LinkedStackTest extends BaseTest {
+
     private LinkedStack<Integer> lStack = new LinkedStack<>();
 
+    @Override
     @Test
-    void shouldCheckIfEmptyPushAndPop() {
+    public void shouldCheckIfEmptyAddAndRemoveValue() {
 
     //arrange
     assertTrue(lStack.isEmpty());
@@ -21,11 +24,12 @@ class LinkedStackTest {
     assertEquals(2, lStack.size());
     lStack.pop();
     assertEquals(1, lStack.size());
+    assertEquals(1, lStack.size());
 
     }
-
+    @Override
     @Test
-    void shouldPushAndPeek(){
+    public void shouldAddAndPeek(){
 
         //arrange
         assertTrue(lStack.isEmpty());
@@ -43,8 +47,9 @@ class LinkedStackTest {
         assertFalse(lStack.isEmpty());
 
     }
+    @Override
     @Test
-    void shouldCheckIfContainsAndClean(){
+    public void shouldCheckIfContainsAndClean(){
         //arrange
         assertTrue(lStack.isEmpty());
         assertEquals(0, lStack.size());
@@ -63,8 +68,9 @@ class LinkedStackTest {
         assertTrue(lStack.isEmpty());
 
     }
-@Test
-        void shouldThrowExceptions() {
+    @Override
+    @Test
+    public void shouldThrowExceptions() {
     assertThrows(IllegalStateException.class, () -> {
         lStack.peek();
     });
@@ -76,7 +82,6 @@ class LinkedStackTest {
     assertThrows(IllegalStateException.class, () -> {
         lStack.pop();
     });
-
 }
 }
 

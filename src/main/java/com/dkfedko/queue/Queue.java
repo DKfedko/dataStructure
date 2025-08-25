@@ -7,5 +7,6 @@ public interface Queue<T> {
     int size();
     boolean isEmpty();
     boolean contains(T value);
+    void clean();
     String toString();
 }

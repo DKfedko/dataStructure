@@ -1,16 +1,18 @@
 package com.dkfedko.queue;
 
+import com.dkfedko.BaseTest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class LinkedQueueTest {
+public class LinkedQueueTest extends BaseTest {
 
     private LinkedQueue<Integer> currentNode = new LinkedQueue<>();
 
+    @Override
     @Test
-    void shouldCheckIfEmptyEnqueueAndDequeue (){
+    public void shouldCheckIfEmptyAddAndRemoveValue(){
 
     //arrange
     assertTrue(currentNode.isEmpty());
@@ -24,8 +26,9 @@ class LinkedQueueTest {
     assertEquals(1, currentNode.size());
 
     }
+    @Override
     @Test
-    void shouldPeekAndDequeue () {
+    public void shouldAddAndPeek () {
         //arrange
         assertTrue(currentNode.isEmpty());
 
@@ -40,8 +43,9 @@ class LinkedQueueTest {
         assertEquals(1, currentNode.size());
 
     }
+    @Override
     @Test
-    void shouldCheckIfContains(){
+    public void shouldCheckIfContainsAndClean(){
 
         //arrange
         assertTrue(currentNode.isEmpty());
@@ -56,10 +60,12 @@ class LinkedQueueTest {
         assertEquals(3, currentNode.size());
         assertTrue(currentNode.contains(3));
         assertFalse(currentNode.contains(4));
+        currentNode.clean();
+        assertTrue(currentNode.isEmpty());
     }
-
+    @Override
     @Test
-    void shouldThrowExceptions(){
+    public void shouldThrowExceptions(){
 
         assertThrows(IllegalStateException.class, () -> {
             currentNode.peek();

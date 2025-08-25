@@ -14,7 +14,6 @@ public class LinkedStack<T> implements Stack<T> {
         }
     }
 
-
     @Override
     public void push(T value) {
         Node<T> newNode = new Node<>(value);

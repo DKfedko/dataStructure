@@ -72,4 +72,8 @@ public class LinkedQueue<T> implements Queue<T> {
         }
         return false;
     }
+    @Override
+    public void clean() {
+        size =0;
+    }
 }

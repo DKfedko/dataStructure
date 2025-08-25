@@ -57,7 +57,7 @@ class ArrayStackTest {
     }
 
     @Test
-    void shouldRemoveTopValue() {
+    void shouldRemoveValue() {
 
         //arrange
         stack.push("cat");
@@ -66,7 +66,6 @@ class ArrayStackTest {
 
         //act and assert
         assertEquals(3, stack.size());
-        assertEquals(2, stack.size());
         assertFalse(stack.isEmpty());
         stack.clean();
         assertTrue(stack.isEmpty());

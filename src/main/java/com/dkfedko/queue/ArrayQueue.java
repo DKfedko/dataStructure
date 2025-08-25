@@ -48,6 +48,11 @@ public class ArrayQueue<T> implements Queue<T> {
     }
 
     @Override
+    public void clean() {
+
+    }
+
+    @Override
     public boolean contains(Object value) {
         if (size  == 0) {
             throw new IllegalStateException("No elements contains");
