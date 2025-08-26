@@ -29,5 +29,4 @@ public interface List <T> {
     int lastIndexOf(T value);
     String toString();
 
-
 }
