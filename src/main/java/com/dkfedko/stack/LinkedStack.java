@@ -63,9 +63,9 @@ public class LinkedStack<T> implements Stack<T> {
         if (isEmpty()) {
             throw new IllegalStateException("LinkedStack is empty, size = " + size);
         }
-        ;
+
         Node<T> current = head;
-        while (current!= null) {
+        while (current != null) {
             if (current.value == (value)) {
                 return true;
             }

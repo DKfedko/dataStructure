@@ -1,10 +1,22 @@
 package com.dkfedko.stack;
 
-import com.dkfedko.AbstractBaseTest;
-import com.dkfedko.queue.LinkedQueue;
+public class LinkedStackTest extends AbstractStackTest<Integer> {
 
-public class LinkedStackTest extends AbstractBaseTest<Integer> {
-
-
+    @Override
+    protected Stack<Integer> createStack() {
+        return new LinkedStack<>();
+    }
 }
+
+
+/**
+ * //    LisnkedStack stack = new LinkedStack<>();
+ * //    Stack stack = new LinkedStack();
+ *
+ * @Override protected Stack<Integer> createStack() {
+ * Stack stack = new LinkedStack();
+ * return stack ;
+ * }
+ * }
+ */
 

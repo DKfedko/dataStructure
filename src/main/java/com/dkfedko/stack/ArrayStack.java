@@ -7,6 +7,9 @@ public class ArrayStack implements Stack {
 
     @Override
     public boolean contains(Object value) {
+        if (isEmpty()) {
+            throw new IllegalStateException("LinkedStack is empty, size = " + size);
+        }
         for (int i = 0; i < size; i++) {
             if (stack[i].equals(value)) {
                 return true;
@@ -36,9 +39,9 @@ public class ArrayStack implements Stack {
 
     @Override
     public Object pop() {
-        if (isEmpty()){
-                throw new IllegalStateException("Stack is empty, nothing to pop ");
-            }
+        if (isEmpty()) {
+            throw new IllegalStateException("Stack is empty, nothing to pop ");
+        }
 
         Object result = stack[size - 1];
         size--;
@@ -50,15 +53,15 @@ public class ArrayStack implements Stack {
         if (isEmpty()) {
             throw new IllegalStateException("Stack is empty, nothing to peek ");
         }
-            return stack[size - 1];
-        }
+        return stack[size - 1];
+    }
 
     @Override
     public boolean isEmpty() {
         if (size == 0) {
             return true;
         }
-            return false;
+        return false;
     }
 
     @Override

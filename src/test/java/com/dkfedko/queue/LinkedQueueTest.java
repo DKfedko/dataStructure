@@ -1,8 +1,8 @@
 package com.dkfedko.queue;
 
-import com.dkfedko.AbstractBaseTest;
+import com.dkfedko.stack.AbstractStackTest;
 
 
-class LinkedQueueTest extends AbstractBaseTest<Integer>  {
+class LinkedQueueTest {
 
 }
