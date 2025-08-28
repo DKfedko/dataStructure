@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public abstract class AbstractStackTest<T> {
+public abstract class AbstractStackTest {
     protected abstract Stack<Integer> createStack();
 
     Stack<Integer> stack = createStack();//new LinedStack() or ArrayStack()

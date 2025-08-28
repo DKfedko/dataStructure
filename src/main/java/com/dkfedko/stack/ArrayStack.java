@@ -1,12 +1,12 @@
 package com.dkfedko.stack;
 
-public class ArrayStack implements Stack {
+public class ArrayStack<T> implements Stack<T> {
 
-    private Object[] stack = new Object[5];
+    private T[] stack = (T []) new Object  [5];
     private int size;
 
     @Override
-    public boolean contains(Object value) {
+    public boolean contains(T value) {
         if (isEmpty()) {
             throw new IllegalStateException("LinkedStack is empty, size = " + size);
         }
@@ -17,39 +17,36 @@ public class ArrayStack implements Stack {
         }
         return false;
     }
-
     private void grow() {
         if (size == stack.length) {
             int newLength = stack.length * 2;
-            Object[] newStack = new Object[newLength];
+            T[] newStack = (T[]) new Object[newLength];
             for (int i = 0; i < size; i++) {
                 newStack[i] = stack[i];
             }
             stack = newStack;
         }
-
     }
-
     @Override
-    public void push(Object value) {
+    public void push(T value) {
         grow();
         stack[size] = value;
         size++;
     }
 
     @Override
-    public Object pop() {
+    public T pop() {
         if (isEmpty()) {
             throw new IllegalStateException("Stack is empty, nothing to pop ");
         }
 
-        Object result = stack[size - 1];
+        T result = stack[size - 1];
         size--;
         return result;
     }
 
     @Override
-    public Object peek() {
+    public T peek() {
         if (isEmpty()) {
             throw new IllegalStateException("Stack is empty, nothing to peek ");
         }
@@ -72,6 +69,7 @@ public class ArrayStack implements Stack {
     @Override
     public void clean() {
         size = 0;
+
     }
 }
 

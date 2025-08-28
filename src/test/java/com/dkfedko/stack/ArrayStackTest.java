@@ -1,10 +1,11 @@
 package com.dkfedko.stack;
 
-class ArrayStackTest extends AbstractStackTest {
+public class ArrayStackTest extends AbstractStackTest {
     @Override
     protected Stack<Integer> createStack() {
-        return new ArrayStack();
+        return new ArrayStack<>();
     }
+}
 
     /**
      *  @Override
@@ -13,4 +14,3 @@ class ArrayStackTest extends AbstractStackTest {
      *         return stack;
      *     }
      */
-}

@@ -1,7 +1,6 @@
 package com.dkfedko.stack;
 
-public class LinkedStackTest extends AbstractStackTest<Integer> {
-
+public class LinkedStackTest extends AbstractStackTest {
     @Override
     protected Stack<Integer> createStack() {
         return new LinkedStack<>();
@@ -10,7 +9,7 @@ public class LinkedStackTest extends AbstractStackTest<Integer> {
 
 
 /**
- * //    LisnkedStack stack = new LinkedStack<>();
+ * //    LinkedStack stack = new LinkedStack<>();
  * //    Stack stack = new LinkedStack();
  *
  * @Override protected Stack<Integer> createStack() {

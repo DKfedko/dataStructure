@@ -10,15 +10,15 @@ public interface List <T> {
 
     // we can get value by index between [0, size - 1]
     // otherwise throw new IndexOutOfBoundsException
-    Object get (int index);
+    T get (int index);
 
     // we can set value by index between [0, size - 1]
     // otherwise throw new IndexOutOfBoundsException
-    Object set(T value, int index);
+    T set(T value, int index);
 
     // we can remove value by index between [0, size - 1]
     // otherwise throw new IndexOutOfBoundsException
-    Object remove(int index);
+    T remove(int index);
 
 
     void clear();

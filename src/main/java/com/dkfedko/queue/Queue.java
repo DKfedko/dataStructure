@@ -2,11 +2,12 @@ package com.dkfedko.queue;
 
 public interface Queue<T> {
     void enqueue(T value);
-    Object dequeue ();
-    Object peek();
+    T dequeue ();
+    T peek();
     int size();
     boolean isEmpty();
     boolean contains(T value);
     void clean();
     String toString();
 }
+

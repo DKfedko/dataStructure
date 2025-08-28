@@ -2,18 +2,17 @@ package com.dkfedko.stack;
 
 public interface Stack<T> {
 
+    boolean contains(T value);
+
     void push (T value);
 
-    Object pop ();
+    T pop ();
 
-    Object peek();
+    T peek();
 
     boolean isEmpty();
 
     int size();
 
     void clean();
-
-    boolean contains(T value);
-
 }

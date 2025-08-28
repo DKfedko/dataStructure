@@ -30,18 +30,18 @@ public class LinkedQueue<T> implements Queue<T> {
     }
 
     @Override
-    public Object dequeue() {
+    public T dequeue() {
         if (isEmpty()){
             throw new IllegalStateException("LinkedQueue is empty, size = " + size);
         };
-       Object result = head.value;
+       T result = head.value;
        head = head.next;
        size --;
        return result;
     }
 
     @Override
-    public Object peek() {
+    public T peek() {
         if (isEmpty()){
             throw new IllegalStateException("LinkedQueue is empty, size = " + size);
         };

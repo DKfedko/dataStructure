@@ -14,11 +14,11 @@ public class ArrayQueue<T> implements Queue<T> {
     }
 
     @Override
-    public Object dequeue() {
+    public T dequeue() {
         if (size == 0) {
             throw new IllegalStateException("ArrayQueue is empty");
         }
-        Object result = arrayQueue[0];
+        T result = (T) arrayQueue[0];
         for (int i = 1; i< size; i++){
             arrayQueue [i-1] =arrayQueue [i];
         }
@@ -27,11 +27,11 @@ public class ArrayQueue<T> implements Queue<T> {
     }
 
     @Override
-    public Object peek() {
+    public T peek() {
         if (size  ==0) {
             throw new IllegalStateException("there is no one in queue");
         }
-        return arrayQueue[0];
+        return (T) arrayQueue[0];
     }
 
     @Override
@@ -49,6 +49,7 @@ public class ArrayQueue<T> implements Queue<T> {
 
     @Override
     public void clean() {
+        size = 0;
 
     }
 
