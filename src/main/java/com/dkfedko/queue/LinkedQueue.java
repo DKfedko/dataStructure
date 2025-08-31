@@ -1,5 +1,7 @@
 package com.dkfedko.queue;
 
+import java.util.StringJoiner;
+
 public class LinkedQueue<T> implements Queue<T> {
 
     Node<T> head;
@@ -75,5 +77,16 @@ public class LinkedQueue<T> implements Queue<T> {
     @Override
     public void clean() {
         size =0;
+    }
+
+    @Override
+    public  String toString(){
+        StringJoiner joiner = new StringJoiner( ", ", "[","]");
+        Node<T> current = head;
+        while (current != null){
+            joiner.add(current.value.toString());
+            current = current.next;
+        }
+        return joiner.toString();
     }
 }

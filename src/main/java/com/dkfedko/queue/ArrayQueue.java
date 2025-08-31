@@ -1,5 +1,7 @@
 package com.dkfedko.queue;
 
+import java.util.StringJoiner;
+
 public class ArrayQueue<T> implements Queue<T> {
 
     private Object[] arrayQueue = new Object[5];
@@ -78,13 +80,10 @@ public class ArrayQueue<T> implements Queue<T> {
 
     @Override
     public String toString() {
-        String start = "[";
-        for (int i = 0; i < size; i++){
-        start = start + arrayQueue[i];
-        start = start + ",";
-        start = start + " ";
+        StringJoiner joiner = new StringJoiner(", ", "[", "]");
+        for (int i = 0; i < size; i++) {
+            joiner.add(arrayQueue[i].toString());
         }
-        start +="]";
-        return start;
+        return joiner.toString();
     }
 }
