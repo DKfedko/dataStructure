@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public abstract class AbstractStackTest {
     protected abstract Stack<Integer> createStack();
 
-    Stack<Integer> stack = createStack();//new LinedStack() or ArrayStack()
+    Stack<Integer> stack = createStack();
 
     @Test
     public void shouldCheckIfEmptyAddAndRemoveValue() {

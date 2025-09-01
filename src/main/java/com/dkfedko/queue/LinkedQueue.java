@@ -1,5 +1,4 @@
 package com.dkfedko.queue;
-
 import java.util.StringJoiner;
 
 public class LinkedQueue<T> implements Queue<T> {

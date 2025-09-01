@@ -1,18 +1,20 @@
 package com.dkfedko.list;
 
+import java.util.StringJoiner;
+
 public class ArrayList<T> implements List<T> {
     private int size;
-    private T [] elements;
+    private T[] elements;
     private static final int DEFAULT_CAPACITY = 10;
 
 
     public ArrayList() {
-        this.elements = (T []) new Object [DEFAULT_CAPACITY];
+        this.elements = (T[]) new Object[DEFAULT_CAPACITY];
 
     }
 
-    public ArrayList (int capacity) {
-        this.elements =  (T[]) new Object [capacity];
+    public ArrayList(int capacity) {
+        this.elements = (T[]) new Object[capacity];
     }
 
     @Override
@@ -115,17 +117,12 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public String toString() {
-        String result = "[";
-        for (int i = 0; i < size; i++){
-            result = result + elements[i];
-            if (i < size - 1){
-                result = result + ", ";
-            }
+        StringJoiner joiner = new StringJoiner(", ", "[", "]");
+        for (int i = 0; i < size; i++) {
+            joiner.add(elements[i].toString());
         }
-        result += "]";
-        return result;
+        return joiner.toString();
     }
-
     private void validateIndex(int index) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("list is empty " + "size = " + size);

@@ -20,7 +20,6 @@ public interface List <T> {
     // otherwise throw new IndexOutOfBoundsException
     T remove(int index);
 
-
     void clear();
     int size();
     boolean isEmpty();

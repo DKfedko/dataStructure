@@ -10,119 +10,119 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public abstract class AbstractQueueTest {
     protected abstract Queue<Integer> createQueue();
 
-    Queue<Integer> arrayQueue = createQueue();
+    Queue<Integer> queue = createQueue();
 
     @Test
     void shouldCheckIfEmpty() {
 
-        assertTrue(arrayQueue.isEmpty());
+        assertTrue(queue.isEmpty());
     }
 
     @Test
     void shouldEnqueue() {
 
-        assertTrue(arrayQueue.isEmpty());
+        assertTrue(queue.isEmpty());
 
-        arrayQueue.enqueue(2);
+        queue.enqueue(2);
 
-        assertEquals(1, arrayQueue.size());
+        assertEquals(1, queue.size());
 
-        arrayQueue.enqueue(3);
+        queue.enqueue(3);
 
-        assertEquals(2, arrayQueue.size());
+        assertEquals(2, queue.size());
     }
 
     @Test
     void shouldCheckIfContains() {
 
         //assert
-        assertTrue(arrayQueue.isEmpty());
+        assertTrue(queue.isEmpty());
 
         //act
-        arrayQueue.enqueue(1);
+        queue.enqueue(1);
 
         //assert
-        assertEquals(1, arrayQueue.size());
+        assertEquals(1, queue.size());
 
         //act
-        arrayQueue.enqueue(2);
+        queue.enqueue(2);
 
         //assert
-        assertEquals(2, arrayQueue.size());
+        assertEquals(2, queue.size());
 
-        assertTrue(arrayQueue.contains(1));
-        assertFalse(arrayQueue.contains(3));
+        assertTrue(queue.contains(1));
+        assertFalse(queue.contains(3));
 
     }
 
     @Test
     void shouldPeek() {
 
-        assertTrue(arrayQueue.isEmpty());
+        assertTrue(queue.isEmpty());
 
-        arrayQueue.enqueue(1);
+        queue.enqueue(1);
 
-        assertEquals(1, arrayQueue.size());
+        assertEquals(1, queue.size());
 
-        arrayQueue.enqueue(2);
+        queue.enqueue(2);
 
-        assertEquals(2, arrayQueue.size());
+        assertEquals(2, queue.size());
 
-        assertFalse(arrayQueue.contains(3));
+        assertFalse(queue.contains(3));
 
-        arrayQueue.peek();
+        queue.peek();
 
-        assertEquals(2, arrayQueue.size());
+        assertEquals(2, queue.size());
 
     }
 
     @Test
     void shouldGrow() {
 
-        assertTrue(arrayQueue.isEmpty());
+        assertTrue(queue.isEmpty());
 
-        arrayQueue.enqueue(10);
+        queue.enqueue(10);
 
-        assertEquals(1, arrayQueue.size());
+        assertEquals(1, queue.size());
 
-        arrayQueue.enqueue(20);
+        queue.enqueue(20);
 
-        assertEquals(2, arrayQueue.size());
+        assertEquals(2, queue.size());
 
-        assertFalse(arrayQueue.contains(15));
+        assertFalse(queue.contains(15));
 
-        arrayQueue.peek();
+        queue.peek();
 
-        assertEquals(2, arrayQueue.size());
+        assertEquals(2, queue.size());
 
-        arrayQueue.enqueue(10);
-        arrayQueue.enqueue(15);
-        arrayQueue.enqueue(20);
-        arrayQueue.enqueue(25);
+        queue.enqueue(10);
+        queue.enqueue(15);
+        queue.enqueue(20);
+        queue.enqueue(25);
 
     }
     @Test
     void shouldCheckTheSize () {
 
-        assertEquals(0, arrayQueue.size());
-        arrayQueue.enqueue(10);
-        arrayQueue.enqueue(15);
-        assertEquals(2, arrayQueue.size());
+        assertEquals(0, queue.size());
+        queue.enqueue(10);
+        queue.enqueue(15);
+        assertEquals(2, queue.size());
 
     }
 
     @Test
     void shouldDequeue(){
 
-        assertEquals(0, arrayQueue.size());
-        arrayQueue.enqueue(11);
-        arrayQueue.enqueue(12);
-        assertEquals(2, arrayQueue.size());
-        arrayQueue.dequeue();
-        assertEquals(1, arrayQueue.size());
-        arrayQueue.dequeue();
-        assertEquals(0, arrayQueue.size());
-        assertTrue(arrayQueue.isEmpty());
+        assertEquals(0, queue.size());
+        queue.enqueue(11);
+        queue.enqueue(12);
+        assertEquals(2, queue.size());
+        queue.dequeue();
+        assertEquals(1, queue.size());
+        queue.dequeue();
+        assertEquals(0, queue.size());
+        assertTrue(queue.isEmpty());
 
     }
 
@@ -130,28 +130,28 @@ public abstract class AbstractQueueTest {
     void shouldTrowExceptions(){
 
         assertThrows(IllegalStateException.class, () -> {
-            arrayQueue.peek();
+            queue.peek();
         });
 
         assertThrows(IllegalStateException.class, () -> {
-            arrayQueue.dequeue();
+            queue.dequeue();
         });
 
         assertThrows(IllegalStateException.class, () -> {
-            arrayQueue.contains(0);
+            queue.contains(0);
         });
 
     }
 
     @Test
     void testToString() {
-        arrayQueue.enqueue(10);
-        arrayQueue.enqueue(20);
-        arrayQueue.enqueue(30);
-        arrayQueue.enqueue(40);
-        arrayQueue.enqueue(50);
+        queue.enqueue(10);
+        queue.enqueue(20);
+        queue.enqueue(30);
+        queue.enqueue(40);
+        queue.enqueue(50);
 
-        String queueToString = arrayQueue.toString();
+        String queueToString = queue.toString();
         assertEquals("[10, 20, 30, 40, 50]", queueToString);
     }
 }

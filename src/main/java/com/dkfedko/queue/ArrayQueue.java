@@ -30,7 +30,7 @@ public class ArrayQueue<T> implements Queue<T> {
 
     @Override
     public T peek() {
-        if (size  ==0) {
+        if (size  == 0) {
             throw new IllegalStateException("there is no one in queue");
         }
         return (T) arrayQueue[0];
