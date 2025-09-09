@@ -62,35 +62,35 @@ public class LinkedList<T> implements List<T> {
             newNode = newNode.next;
         }
         newNode.prev = newNode.next;
-
+        
         return newNode.value;
     }
 
     @Override
     public T remove(int index) {
-        Node<T> newNode = getCurrentNode(index);
+        Node<T> currentNode = getCurrentNode(index);
         if (size == 1) {
             clear();
         } else if (index == 0) {
-            head = newNode.next;
-            newNode.next.prev = null;
+            head = currentNode.next;
+            currentNode.next.prev = null;
         } else if (index == size - 1) {
-          head = newNode.next;
-            newNode.prev = tail;
-        } else{
+            currentNode.prev = tail;
+        }else{
             for (int i = 0; i < index; i++){
-                Node<T> current = head;
-                current.next = null;
-                newNode.prev = newNode.next;
+                currentNode.prev.next = currentNode.next;
+                currentNode.next.prev = currentNode.prev;
+                size --;
             }
         }
-        return newNode.value;
+        return currentNode.value;
     }
 
     @Override
     public void clear() {
         head = null;
         tail = null;
+        size = 0;
     }
 
     @Override
@@ -105,12 +105,16 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public boolean contains(T value) {
-        validateIndex();
-
-        Node<T> newNode = new Node<>(value);
-        while (newNode != null) {
-            if (newNode.value == value) {
-                return true;
+        Node<T> currentNode = head;
+        if (head.value.equals(value)) {
+            return true;
+        } else if (head !=value) {
+            currentNode = currentNode.next;
+            while (currentNode != null) {
+                currentNode = currentNode.next;
+                if (currentNode.value.equals(value)) {
+                    return true;
+                }
             }
         }
         return false;
@@ -118,16 +122,34 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public int indexOf(T value) {
-        validateIndex();
 
-        return 0;
-    }
+        Node<T> current = head;
+            int index = 0;
+            while (current != null) {
+                if (current.value.equals(value)) {
+                    return index;
+                }else{
+                    current = current.next;
+                    index++;
+                }
+            }
+        return -1;
+        }
 
     @Override
     public int lastIndexOf(T value) {
-        validateIndex();
 
-        return 0;
+        Node<T> current = tail;
+        int index = size-1;
+        while (current != null) {
+            if (current.value.equals(value)) {
+                return index;
+            } else {
+                current = current.prev;
+                index--;
+            }
+        }
+        return -1;
     }
 
     @Override

@@ -59,7 +59,6 @@ public abstract class AbstractListTest {
 
         }
         @Test
-
         void shouldCheckIfContains(){
 
             //arrange
@@ -71,9 +70,8 @@ public abstract class AbstractListTest {
             //assert
             assertTrue(list1.contains(5));
             assertFalse(list1.contains(10));
-
         }
-        //CHECK TEST with SET AND ADD TEST FOR GROW
+
         @Test
         void shouldSetNewElements() {
 
