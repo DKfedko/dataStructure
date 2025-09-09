@@ -6,11 +6,3 @@ public class ArrayStackTest extends AbstractStackTest {
         return new ArrayStack<>();
     }
 }
-
-    /**
-     *  @Override
-     *     protected Stack<Integer> createStack() {
-     *         Stack<Integer> stack = new ArrayStack<>();
-     *         return stack;
-     *     }
-     */

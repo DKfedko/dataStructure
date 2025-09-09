@@ -23,7 +23,7 @@ public class LinkedList<T> implements List<T> {
         Node<T> newNode = new Node<>(value);
         if (size == 0) {
             head = tail = newNode;
-        } else if (index == size - 1) {
+        } else if (index == size) {
             tail.next = newNode;
             newNode.prev = tail;
             tail = newNode;
@@ -32,17 +32,11 @@ public class LinkedList<T> implements List<T> {
             newNode.next = head;
             head = newNode;
         } else {
-            for (int i = 0; i < index; i++) {
-                tail.next = newNode;
-                newNode.prev = tail;
-                tail = newNode;
-            }
-
             Node<T> current = head;
             for (int i = 0; i < index; i++) {
                 current = current.next;
             }
-            newNode.prev = current.prev;
+            newNode.prev = current.prev;  //Вставляюю між вузлів
             newNode.next = current;
             current.prev.next = newNode;
             current.prev = newNode;
@@ -51,7 +45,9 @@ public class LinkedList<T> implements List<T> {
     }
 
     @Override
-    public T get(int index) {
+    public T get (int index) {
+        validateIndex();
+
         Node<T> newNode = head;
         for (int i = 0; i < index; i++) {
             newNode = newNode.next;
@@ -66,20 +62,35 @@ public class LinkedList<T> implements List<T> {
             newNode = newNode.next;
         }
         newNode.prev = newNode.next;
-        newNode.next =
 
-            return
+        return newNode.value;
     }
 
     @Override
     public T remove(int index) {
-        return null;
+        Node<T> newNode = getCurrentNode(index);
+        if (size == 1) {
+            clear();
+        } else if (index == 0) {
+            head = newNode.next;
+            newNode.next.prev = null;
+        } else if (index == size - 1) {
+          head = newNode.next;
+            newNode.prev = tail;
+        } else{
+            for (int i = 0; i < index; i++){
+                Node<T> current = head;
+                current.next = null;
+                newNode.prev = newNode.next;
+            }
+        }
+        return newNode.value;
     }
 
     @Override
     public void clear() {
-       size = 0;
-
+        head = null;
+        tail = null;
     }
 
     @Override
@@ -89,17 +100,16 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public boolean isEmpty() {
-        if (size == 0){
-            return true;
-        }
-        return false;
+        return size == 0;
     }
 
     @Override
-    public boolean contains(T value){
+    public boolean contains(T value) {
+        validateIndex();
+
         Node<T> newNode = new Node<>(value);
-        while (newNode != null){
-            if (newNode.value==value){
+        while (newNode != null) {
+            if (newNode.value == value) {
                 return true;
             }
         }
@@ -108,27 +118,66 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public int indexOf(T value) {
+        validateIndex();
+
         return 0;
     }
 
     @Override
     public int lastIndexOf(T value) {
+        validateIndex();
+
         return 0;
     }
 
     @Override
     public String toString() {
+        validateIndex();
+
         StringBuilder sb = new StringBuilder();
+        sb.append("[");
+
         Node<T> current = head;
-        return "";
+        while (current != null) {
+            sb.append(current.value);
+            if (current.next != null) {
+                sb.append(", ");
+            }
+            current = current.next;
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+    private Node<T> getCurrentNode(int index) {
+        validateIndex();
+
+        Node<T> current;
+        if (index < size / 2) {
+            current = head;
+            for (int i = 0; i < size; i++) {
+                current = current.next;
+            }
+        } else {
+            current = tail;
+            for (int i = size - 1; i > index; i--) {
+                current = current.prev;
+            }
+        }
+        return current;
     }
 
-    public static class Node<T>{
+    private void validateIndex() {
+        if (size == 0) {
+            throw new IllegalStateException("LinkedList is empty, size = " + size);
+        }
+    }
+
+    public static class Node<T> {
         T value;
         Node<T> next;
         Node<T> prev;
 
-        Node(T value){
+        Node(T value) {
             this.value = value;
         }
     }

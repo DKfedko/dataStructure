@@ -123,7 +123,6 @@ public abstract class AbstractQueueTest {
         queue.dequeue();
         assertEquals(0, queue.size());
         assertTrue(queue.isEmpty());
-
     }
 
     @Test
@@ -140,7 +139,6 @@ public abstract class AbstractQueueTest {
         assertThrows(IllegalStateException.class, () -> {
             queue.contains(0);
         });
-
     }
 
     @Test

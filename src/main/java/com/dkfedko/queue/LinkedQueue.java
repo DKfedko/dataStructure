@@ -29,13 +29,10 @@ public class LinkedQueue<T> implements Queue<T> {
         }
         size++;
     }
-
     @Override
     public T dequeue() {
-        if (isEmpty()){
-            throw new IllegalStateException("LinkedQueue is empty, size = " + size);
-        };
-       T result = head.value;
+        validateIndex();
+        T result = head.value;
        head = head.next;
        size --;
        return result;
@@ -43,9 +40,8 @@ public class LinkedQueue<T> implements Queue<T> {
 
     @Override
     public T peek() {
-        if (isEmpty()){
-            throw new IllegalStateException("LinkedQueue is empty, size = " + size);
-        };
+        validateIndex();
+
         return head.value;
     }
 
@@ -61,9 +57,8 @@ public class LinkedQueue<T> implements Queue<T> {
 
     @Override
     public boolean contains(T value) {
-        if (isEmpty()){
-            throw new IllegalStateException("LinkedQueue is empty, size = " + size);
-        };
+        validateIndex();
+        ;
         Node<T> current  = head;
         while (current != null){
             if (current.value == (value)){
@@ -87,5 +82,10 @@ public class LinkedQueue<T> implements Queue<T> {
             current = current.next;
         }
         return joiner.toString();
+    }
+    private void validateIndex() {
+        if (isEmpty()){
+            throw new IllegalStateException("LinkedQueue is empty, size = " + size);
+        }
     }
 }

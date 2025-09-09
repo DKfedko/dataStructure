@@ -7,9 +7,7 @@ public class ArrayStack<T> implements Stack<T> {
 
     @Override
     public boolean contains(T value) {
-        if (isEmpty()) {
-            throw new IllegalStateException("LinkedStack is empty, size = " + size);
-        }
+        validateIndex();
         for (int i = 0; i < size; i++) {
             if (stack[i].equals(value)) {
                 return true;
@@ -17,13 +15,12 @@ public class ArrayStack<T> implements Stack<T> {
         }
         return false;
     }
+
     private void grow() {
         if (size == stack.length) {
             int newLength = stack.length * 2;
             T[] newStack = (T[]) new Object[newLength];
-            for (int i = 0; i < size; i++) {
-                newStack[i] = stack[i];
-            }
+            System.arraycopy(stack, 0, newStack, 0, size);
             stack = newStack;
         }
     }
@@ -36,9 +33,7 @@ public class ArrayStack<T> implements Stack<T> {
 
     @Override
     public T pop() {
-        if (isEmpty()) {
-            throw new IllegalStateException("Stack is empty, nothing to pop ");
-        }
+        validateIndex();
 
         T result = stack[size - 1];
         size--;
@@ -47,18 +42,13 @@ public class ArrayStack<T> implements Stack<T> {
 
     @Override
     public T peek() {
-        if (isEmpty()) {
-            throw new IllegalStateException("Stack is empty, nothing to peek ");
-        }
+        validateIndex();
         return stack[size - 1];
     }
 
     @Override
     public boolean isEmpty() {
-        if (size == 0) {
-            return true;
-        }
-        return false;
+        return size == 0;
     }
 
     @Override
@@ -70,6 +60,11 @@ public class ArrayStack<T> implements Stack<T> {
     public void clean() {
         size = 0;
 
+    }
+    private void validateIndex() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Stack is empty, size = " + size);
+        }
     }
 }
 

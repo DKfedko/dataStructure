@@ -7,14 +7,8 @@ public class ArrayList<T> implements List<T> {
     private T[] elements;
     private static final int DEFAULT_CAPACITY = 10;
 
-
     public ArrayList() {
         this.elements = (T[]) new Object[DEFAULT_CAPACITY];
-
-    }
-
-    public ArrayList(int capacity) {
-        this.elements = (T[]) new Object[capacity];
     }
 
     @Override
@@ -55,9 +49,7 @@ public class ArrayList<T> implements List<T> {
     @Override
     public T remove(int index) {
         validateIndex(index);
-        if (size == 0) {
-            throw new IllegalStateException("size is " + size + " nothing to remove");
-        }
+
         T removed = elements[index];
         for (int i = index; i < size - 1; i++) {
             elements[i] = elements[i + 1];
@@ -79,10 +71,7 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public boolean isEmpty() {
-        if (size == 0) {
-            return true;
-        }
-        return false;
+        return size == 0;
     }
 
     @Override
@@ -132,9 +121,7 @@ public class ArrayList<T> implements List<T> {
         if (size == elements.length) {
             int extendedList = elements.length * 2;
             T[] newList = (T[]) new Object[extendedList];
-            for (int i = 0; i < elements.length; i++) {
-                newList[i] = elements[i];
-            }
+            System.arraycopy(elements, 0, newList, 0, elements.length);
             elements = newList;
         }
     }

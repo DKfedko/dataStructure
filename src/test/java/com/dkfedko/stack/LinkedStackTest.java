@@ -8,14 +8,3 @@ public class LinkedStackTest extends AbstractStackTest {
 }
 
 
-/**
- * //    LinkedStack stack = new LinkedStack<>();
- * //    Stack stack = new LinkedStack();
- *
- * @Override protected Stack<Integer> createStack() {
- * Stack stack = new LinkedStack();
- * return stack ;
- * }
- * }
- */
-

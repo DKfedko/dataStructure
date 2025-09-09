@@ -49,7 +49,6 @@ public abstract class AbstractStackTest {
     @Test
     public void shouldCheckIfContainsAndClean() {
 
-
         //arrange
         assertTrue(stack.isEmpty());
         assertEquals(0, stack.size());

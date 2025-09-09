@@ -24,10 +24,7 @@ public class LinkedStack<T> implements Stack<T> {
 
     @Override
     public T pop() {
-        if (isEmpty()) {
-            throw new IllegalStateException("LinkedStack is empty, size = " + size);
-        }
-        ;
+        validateIndex();
         T result = head.value;
         head = head.next;
         size--;
@@ -36,10 +33,7 @@ public class LinkedStack<T> implements Stack<T> {
 
     @Override
     public T peek() {
-        if (isEmpty()) {
-            throw new IllegalStateException("LinkedStack is empty, size = " + size);
-        }
-        ;
+        validateIndex();
         return head.value;
     }
 
@@ -60,9 +54,7 @@ public class LinkedStack<T> implements Stack<T> {
 
     @Override
     public boolean contains(T value) {
-        if (isEmpty()) {
-            throw new IllegalStateException("LinkedStack is empty, size = " + size);
-        }
+        validateIndex();
 
         Node<T> current = head;
         while (current != null) {
@@ -72,5 +64,10 @@ public class LinkedStack<T> implements Stack<T> {
             current = current.next;
         }
         return false;
+    }
+    private void validateIndex() {
+        if (isEmpty()) {
+            throw new IllegalStateException("LinkedStack is empty, size = " + size);
+        }
     }
 }

@@ -14,12 +14,9 @@ public class ArrayQueue<T> implements Queue<T> {
         size++;
 
     }
-
     @Override
     public T dequeue() {
-        if (size == 0) {
-            throw new IllegalStateException("ArrayQueue is empty");
-        }
+        validateIndex();
         T result = (T) arrayQueue[0];
         for (int i = 1; i< size; i++){
             arrayQueue [i-1] =arrayQueue [i];
@@ -30,9 +27,7 @@ public class ArrayQueue<T> implements Queue<T> {
 
     @Override
     public T peek() {
-        if (size  == 0) {
-            throw new IllegalStateException("there is no one in queue");
-        }
+        validateIndex();
         return (T) arrayQueue[0];
     }
 
@@ -43,23 +38,17 @@ public class ArrayQueue<T> implements Queue<T> {
 
     @Override
     public boolean isEmpty() {
-        if (size==0){
-            return true;
-        }
-        return false;
+        return size == 0;
     }
 
     @Override
     public void clean() {
         size = 0;
-
     }
 
     @Override
     public boolean contains(Object value) {
-        if (size  == 0) {
-            throw new IllegalStateException("No elements contains");
-        }
+        validateIndex();
         for (int i = 0; i< size; i++) {
             if (arrayQueue[i].equals(value)) {
                 return true;
@@ -71,9 +60,7 @@ public class ArrayQueue<T> implements Queue<T> {
         if (size == arrayQueue.length){
             int newLength = arrayQueue.length * 2;
                     Object [] newQueue = new Object[newLength];
-            for (int i = 0; i < size; i++) {
-                newQueue [i] = arrayQueue[i];
-            }
+            System.arraycopy(arrayQueue, 0, newQueue, 0, size);
             arrayQueue = newQueue;
         }
     }
@@ -85,5 +72,10 @@ public class ArrayQueue<T> implements Queue<T> {
             joiner.add(arrayQueue[i].toString());
         }
         return joiner.toString();
+    }
+    private void validateIndex() {
+        if (size == 0) {
+            throw new IllegalStateException("Array Queue is empty, size = " +size);
+        }
     }
 }
