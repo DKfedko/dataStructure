@@ -2,11 +2,9 @@ name: Maven Test with JDK 23
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - main
+    branches: [ "main" ]
 
 jobs:
   test:
@@ -23,15 +21,14 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
           
-      - name: Run Maven tests
+      - name: Build and Run Tests
         run: |
-          # Очищає старі збірки та встановлює залежності
-          mvn clean install
+          # Очистка старих збірок
+          mvn clean
           
-          # Запускає тести
-          mvn test
-          # Встановлює потрібні залежності
-          mvn clean install -DskipTests=true
+          # Завантаження залежностей без тестів
+          mvn install -DskipTests=true
           
-          # Запускає тести з JUnit 5
+          # Запуск тестів (JUnit 5 теж підхопиться)
           mvn test
+
