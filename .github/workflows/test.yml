@@ -1,0 +1,32 @@
+name: Maven Test with JDK 23
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: self-hosted  # Використовуємо ваш самохостований раннер
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up JDK 23
+        uses: actions/setup-java@v3
+        with:
+          java-version: '23'
+          distribution: 'temurin'
+          cache: 'maven'
+          
+      - name: Run Maven tests
+        run: |
+          # Встановлює потрібні залежності
+          mvn clean install -DskipTests=true
+          
+          # Запускає тести з JUnit 5
+          mvn test
