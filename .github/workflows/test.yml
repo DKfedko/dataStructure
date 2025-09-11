@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    runs-on: self-hosted  # Використовуємо ваш самохостований раннер
+    runs-on: self-hosted
 
     steps:
       - name: Checkout code
@@ -25,6 +25,11 @@ jobs:
           
       - name: Run Maven tests
         run: |
+          # Очищає старі збірки та встановлює залежності
+          mvn clean install
+          
+          # Запускає тести
+          mvn test
           # Встановлює потрібні залежності
           mvn clean install -DskipTests=true
           
