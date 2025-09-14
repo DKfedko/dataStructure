@@ -36,7 +36,7 @@ public class LinkedList<T> implements List<T> {
             for (int i = 0; i < index; i++) {
                 current = current.next;
             }
-            newNode.prev = current.prev;  //Вставляюю між вузлів
+            newNode.prev = current.prev;
             newNode.next = current;
             current.prev.next = newNode;
             current.prev = newNode;
@@ -75,21 +75,23 @@ public class LinkedList<T> implements List<T> {
             head = currentNode.next;
             currentNode.next.prev = null;
         } else if (index == size - 1) {
-            currentNode.prev = tail;
+            tail = currentNode.prev;
+            tail.next = null;
         }else{
-            for (int i = 0; i < index; i++){
                 currentNode.prev.next = currentNode.next;
+                currentNode.prev = null;
                 currentNode.next.prev = currentNode.prev;
-                size --;
+                currentNode.next = null;
             }
-        }
+        size --;
         return currentNode.value;
     }
 
     @Override
     public void clear() {
-        head = null;
-        tail = null;
+        head.prev = null;
+        head.next = null;
+        tail.prev = null;
         size = 0;
     }
 
@@ -176,7 +178,7 @@ public class LinkedList<T> implements List<T> {
         Node<T> current;
         if (index < size / 2) {
             current = head;
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; i < index; i++) {
                 current = current.next;
             }
         } else {
