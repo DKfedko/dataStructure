@@ -107,17 +107,13 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public boolean contains(T value) {
+        if (isEmpty()) return false;
         Node<T> currentNode = head;
-        if (head.value.equals(value)) {
-            return true;
-        } else if (head !=value) {
-            currentNode = currentNode.next;
             while (currentNode != null) {
                 currentNode = currentNode.next;
                 if (currentNode.value.equals(value)) {
                     return true;
                 }
-            }
         }
         return false;
     }
@@ -189,13 +185,11 @@ public class LinkedList<T> implements List<T> {
         }
         return current;
     }
-
     private void validateIndex() {
         if (size == 0) {
             throw new IllegalStateException("LinkedList is empty, size = " + size);
         }
     }
-
     public static class Node<T> {
         T value;
         Node<T> next;
