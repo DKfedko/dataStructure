@@ -66,11 +66,13 @@ public abstract class AbstractListTest {
            assertFalse(list.contains(5));
 
             //act
-            list.add(5);
+            list.add(8);
+            list.add(10);
+            list.add(100);
 
             //assert
-            assertTrue(list.contains(5));
-            assertFalse(list.contains(10));
+            assertTrue(list.contains(8));
+            assertTrue(list.contains(10));
             assertFalse(list.isEmpty());
         }
 
@@ -94,10 +96,10 @@ public abstract class AbstractListTest {
             assertEquals(3, list.size());
 
             //act
-            list.set(20, 1);
+            list.set(50, 1);
 
             //assert
-            assertEquals(20, list.get(1));
+            assertEquals(50, list.get(1));
             assertEquals(3,list.size());
 
         }

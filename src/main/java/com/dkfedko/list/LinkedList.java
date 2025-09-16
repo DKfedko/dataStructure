@@ -61,9 +61,9 @@ public class LinkedList<T> implements List<T> {
         for (int i = 0; i < index; i++) {
             newNode = newNode.next;
         }
-        newNode.prev = newNode.next;
-        
-        return newNode.value;
+            Node<T> oldValue = newNode;
+            newNode.value = value;
+        return oldValue.value;
     }
 
     @Override
@@ -110,10 +110,10 @@ public class LinkedList<T> implements List<T> {
         if (isEmpty()) return false;
         Node<T> currentNode = head;
             while (currentNode != null) {
-                currentNode = currentNode.next;
                 if (currentNode.value.equals(value)) {
                     return true;
                 }
+                currentNode = currentNode.next;
         }
         return false;
     }
