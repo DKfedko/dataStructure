@@ -3,8 +3,6 @@ name: Maven Test with JDK 23
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   test:
@@ -22,13 +20,8 @@ jobs:
           cache: 'maven'
           
       - name: Build and Run Tests
-        run: |
-     
-          mvn clean
-          
-         
-          mvn install -DskipTests=true
-          
-        
-          mvn test
+      - run: |
+            mvn clean install
+            mvn test
+
 
