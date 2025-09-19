@@ -20,7 +20,7 @@ jobs:
           
       - name: Build and Run Tests
         run:  |
-            mvn clean install -e -x
-            mvn test -e -x
+            mvn clean install -e -X
+            mvn test -e -X
 
 
