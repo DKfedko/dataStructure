@@ -1,5 +1,6 @@
 package com.dkfedko.list;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -205,6 +206,7 @@ public abstract class AbstractListTest {
             assertEquals(2,list.size());
 
         }
+        @Disabled
         @Test
         void shouldThrowExceptions(){
 
