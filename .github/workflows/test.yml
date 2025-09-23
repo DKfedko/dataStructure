@@ -1,26 +1,30 @@
-name: Maven Test with JDK 23
+name: Datastructures CI
 
 on:
+  workflow_call:
+  push:
+    branches: [ main ]
+  pull_request:
   workflow_dispatch:
 
 jobs:
-  test:
-    runs-on: self-hosted
+  build:
+    runs-on: ubuntu-latest
+    env:
+      JAVA_VERSION: '23'
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       
       - name: Set up JDK 23
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v5
         with:
           java-version: '23'
           distribution: 'oracle'
           cache: 'maven'
           
-      - name: Build and Run Tests
-        run:  |
-            mvn clean install -e -X
-            mvn test -e -X
+      - name: Build with Maven
+        run: mvn clean package
 
 
