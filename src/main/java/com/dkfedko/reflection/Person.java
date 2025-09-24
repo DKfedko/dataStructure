@@ -1,14 +1,15 @@
 package com.dkfedko.reflection;
-
+import com.dkfedko.reflection.anotations.Inject;
 import com.dkfedko.reflection.anotations.Reflection;
+import com.dkfedko.reflection.anotations.Run;
 
 public class Person implements Reflection {
 
+
     String name;
-    double salary;
+    String salary;
     public int age;
     double weight;
-
 
     @Override
     public String toString() {
@@ -21,8 +22,11 @@ public class Person implements Reflection {
         sb.append('}');
         return sb.toString();
     }
-    public void printName(){
-        System.out.println(name);
+
+    @Override
+    @Inject
+    public void printName() {
+    System.out.println("name is  :" + name);
     }
 
     @Override
@@ -36,17 +40,15 @@ public class Person implements Reflection {
     }
 
     @Override
-    public double getSalary() {
+    @Run
+    public String getSalary() {
+        System.out.println("salary is: " + salary);
         return salary;
     }
 
-    public void printName(int count){
-        for (int i = 0; i <count; i++ ){
-            System.out.println(name);
-        }
+    public Class<Person> getClass(Class<Person> clazz) {
+        return clazz;
     }
-    public Person getClass(Class<Person> clazz){
-        return null;
-    }
+
 
 }

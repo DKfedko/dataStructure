@@ -5,6 +5,6 @@ public interface Reflection {
     void printName();
     double getWeight();
     int getAge();
-    double getSalary();
+    String getSalary();
     }
 

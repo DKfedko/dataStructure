@@ -46,8 +46,6 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public T get (int index) {
-        validateIndex();
-
         Node<T> newNode = head;
         for (int i = 0; i < index; i++) {
             newNode = newNode.next;
@@ -68,6 +66,7 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public T remove(int index) {
+        validateIndex();
         Node<T> currentNode = getCurrentNode(index);
         if (size == 1) {
             clear();
@@ -89,6 +88,7 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public void clear() {
+        validateIndex();
         head.prev = null;
         head.next = null;
         tail.prev = null;
@@ -120,7 +120,6 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public int indexOf(T value) {
-
         Node<T> current = head;
             int index = 0;
             while (current != null) {
@@ -136,7 +135,6 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public int lastIndexOf(T value) {
-
         Node<T> current = tail;
         int index = size-1;
         while (current != null) {
@@ -152,7 +150,6 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public String toString() {
-        validateIndex();
 
         StringBuilder sb = new StringBuilder();
         sb.append("[");
