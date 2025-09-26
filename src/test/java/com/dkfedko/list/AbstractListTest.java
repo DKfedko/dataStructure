@@ -239,7 +239,6 @@ public abstract class AbstractListTest {
             });
         }
         @Test
-
         void testToString(){
 
             list.add(1, 0);

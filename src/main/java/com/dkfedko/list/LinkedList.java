@@ -20,6 +20,7 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public void add(T value, int index) {
+        validateIndex(index);
         Node<T> newNode = new Node<>(value);
         if (size == 0) {
             head = tail = newNode;
@@ -46,6 +47,7 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public T get (int index) {
+        validateIndex(index);
         Node<T> newNode = head;
         for (int i = 0; i < index; i++) {
             newNode = newNode.next;
@@ -55,6 +57,7 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public T set(T value, int index) {
+        validateIndex(index);
         Node<T> newNode = head;
         for (int i = 0; i < index; i++) {
             newNode = newNode.next;
@@ -66,7 +69,7 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public T remove(int index) {
-        validateIndex();
+        validateIndex(index);
         Node<T> currentNode = getCurrentNode(index);
         if (size == 1) {
             clear();
@@ -88,7 +91,6 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public void clear() {
-        validateIndex();
         head.prev = null;
         head.next = null;
         tail.prev = null;
@@ -150,7 +152,6 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public String toString() {
-
         StringBuilder sb = new StringBuilder();
         sb.append("[");
 
@@ -166,7 +167,7 @@ public class LinkedList<T> implements List<T> {
         return sb.toString();
     }
     private Node<T> getCurrentNode(int index) {
-        validateIndex();
+        validateIndex(index);
 
         Node<T> current;
         if (index < size / 2) {
@@ -182,9 +183,9 @@ public class LinkedList<T> implements List<T> {
         }
         return current;
     }
-    private void validateIndex() {
-        if (size == 0) {
-            throw new IllegalStateException("LinkedList is empty, size = " + size);
+    private void validateIndex(int index) {
+        if (index < 0 || index > size){
+            throw new IndexOutOfBoundsException ("LinkedList is empty, size = " + size);
         }
     }
     public static class Node<T> {
